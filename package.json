@@ -1,5 +1,5 @@
 {
-  "name": "phaser-template",
+  "name": "phaser-rpg",
   "version": "1.0.0-alpha",
   "description": "A template for building Phaser games.",
   "author": "Mark <mark@remarkablemark.org>",
@@ -15,7 +15,7 @@
     "test": "web-scripts test --passWithNoTests",
     "postinstall": "husky install"
   },
-  "homepage": "https://remarkablegames.org/phaser-template/",
+  "homepage": "https://remarkablegames.org/phaser-rpg/",
   "dependencies": {
     "phaser": "3.55.2"
   },

@@ -10,8 +10,8 @@ import { Boot, Main } from './scenes';
 const config = {
   width: 800,
   height: 600,
-  title: 'Phaser Template',
-  url: 'https://remarkablegames.org/phaser-template/',
+  title: 'Phaser RPG',
+  url: 'https://remarkablegames.org/phaser-rpg/',
   // see `.env` and `package.json`
   version: process.env.WEB_APP_VERSION,
   scene: [Boot, Main],
