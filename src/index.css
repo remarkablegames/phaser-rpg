@@ -1,0 +1,24 @@
+html,
+body {
+  background: #000;
+
+  /* reset */
+  font-family: 'Lucida Grande', Helvetica, Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+body,
+a {
+  color: #fff;
+}
+
+/* github-corners */
+.github-corner > svg {
+  opacity: 0.5;
+  transition: opacity 0.4s;
+}
+
+.github-corner:hover > svg {
+  opacity: 1;
+}

@@ -1,0 +1,45 @@
+name: build
+on: [push, pull_request]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+
+      - name: Cache dependencies
+        uses: actions/cache@v2
+        with:
+          path: |
+            node_modules
+            */*/node_modules
+          key: ${{ runner.os }}-${{ hashFiles('**/package.json', './package.json') }}
+        id: cache
+
+      - name: Install dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: npm install --prefer-offline
+
+      - name: Lint commit message
+        run: npx commitlint --from=HEAD~1
+
+      - name: ESLint
+        run: npm run lint
+
+      - name: Test
+        run: npm test -- --ci --colors
+
+      - name: Build
+        run: npm run build
+
+      - name: Deploy
+        if: github.ref == 'refs/heads/master'
+        uses: JamesIves/github-pages-deploy-action@4.1.7
+        with:
+          branch: gh-pages
+          folder: build

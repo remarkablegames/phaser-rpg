@@ -1,0 +1,14 @@
+{
+  "extends": [
+    "@descriptive/eslint-config-web-app",
+    "@descriptive/eslint-config-web-app/jest"
+  ],
+  "plugins": ["prettier", "simple-import-sort"],
+  "rules": {
+    "no-debugger": "error",
+    "no-console": "error",
+    "prettier/prettier": "error",
+    "simple-import-sort/exports": "error",
+    "simple-import-sort/imports": "error"
+  }
+}

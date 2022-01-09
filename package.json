@@ -1,0 +1,40 @@
+{
+  "name": "phaser-template",
+  "version": "1.0.0-alpha",
+  "description": "A template for building Phaser games.",
+  "author": "Mark <mark@remarkablemark.org>",
+  "scripts": {
+    "build": "web-scripts build",
+    "clean": "rm -rf build",
+    "deploy": "scripts/deploy.sh",
+    "eject": "web-scripts eject",
+    "lint": "eslint --ignore-path .gitignore .",
+    "lint:fix": "npm run lint -- --fix",
+    "release": "standard-version --no-verify",
+    "start": "web-scripts start",
+    "test": "web-scripts test --passWithNoTests",
+    "postinstall": "husky install"
+  },
+  "homepage": "https://remarkablegames.org/phaser-template/",
+  "dependencies": {
+    "phaser": "3.55.2"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^16.0.1",
+    "@commitlint/config-conventional": "^16.0.0",
+    "@descriptive/web-scripts": "3.0.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-simple-import-sort": "^7.0.0",
+    "gitploy": "0.1.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.1.7",
+    "prettier": "^2.5.1",
+    "standard-version": "^9.3.2",
+    "typescript": "^4.5.4"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "private": true,
+  "license": "MIT"
+}
