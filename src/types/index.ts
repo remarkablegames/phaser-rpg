@@ -1,7 +1,7 @@
 export enum Texture {
-  Dude = 'Dude',
   Ground = 'Ground',
   Sky = 'Sky',
+  Spaceman = 'Spaceman',
   Star = 'Star',
 }
 

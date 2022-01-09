@@ -10,6 +10,7 @@ import { Boot, Main } from './scenes';
 const config = {
   width: 800,
   height: 600,
+  zoom: 2,
   title: 'Phaser RPG',
   url: 'https://remarkablegames.org/phaser-rpg/',
   // see `.env` and `package.json`
@@ -19,7 +20,7 @@ const config = {
     default: 'arcade',
     arcade: {
       gravity: {
-        y: 300,
+        y: 0,
       },
       debug: process.env.NODE_ENV === 'development',
     },
@@ -30,6 +31,7 @@ const config = {
     mode: Scale.FIT,
     autoCenter: Scale.CENTER_BOTH,
   },
+  pixelArt: true,
 };
 
 new Game(config);
