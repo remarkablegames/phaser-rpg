@@ -1,6 +1,6 @@
 import Phaser from 'phaser';
 
-import { Texture } from '../types';
+import { Image } from '../types';
 
 enum Animation {
   Left = 'Left',
@@ -23,10 +23,10 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     scene: Phaser.Scene,
     x: number,
     y: number,
-    texture = Texture.Spaceman,
-    frame = 6
+    texture = Image.Spaceman,
+    frame = 1
   ) {
-    super(scene, x, y, Texture.Spaceman, frame);
+    super(scene, x, y, texture, frame);
 
     // Add the sprite to the scene.
     scene.add.existing(this);
@@ -40,7 +40,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     // Create left animation.
     this.anims.create({
       key: Animation.Left,
-      frames: this.anims.generateFrameNumbers(Texture.Spaceman, {
+      frames: this.anims.generateFrameNumbers(Image.Spaceman, {
         start: 8,
         end: 9,
       }),
@@ -51,7 +51,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     // Create right animation.
     this.anims.create({
       key: Animation.Right,
-      frames: this.anims.generateFrameNumbers(Texture.Spaceman, {
+      frames: this.anims.generateFrameNumbers(Image.Spaceman, {
         start: 1,
         end: 2,
       }),
@@ -62,7 +62,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     // Create up animation.
     this.anims.create({
       key: Animation.Up,
-      frames: this.anims.generateFrameNumbers(Texture.Spaceman, {
+      frames: this.anims.generateFrameNumbers(Image.Spaceman, {
         start: 11,
         end: 13,
       }),
@@ -73,7 +73,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     // Create down animation.
     this.anims.create({
       key: Animation.Down,
-      frames: this.anims.generateFrameNumbers(Texture.Spaceman, {
+      frames: this.anims.generateFrameNumbers(Image.Spaceman, {
         start: 4,
         end: 6,
       }),

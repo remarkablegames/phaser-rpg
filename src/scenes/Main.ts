@@ -1,7 +1,7 @@
 import Phaser from 'phaser';
 
 import { Player } from '../sprites';
-import { Scene } from '../types';
+import { Image, Layer, Scene, Tilemap, Tileset } from '../types';
 
 let player: Player;
 
@@ -11,7 +11,9 @@ export default class Main extends Phaser.Scene {
   }
 
   create() {
-    // Create player.
+    const map = this.make.tilemap({ key: Tilemap.Desert });
+    const tiles = map.addTilesetImage(Tileset.Desert, Image.Desert);
+    map.createLayer(Layer.Ground, tiles, 0, 0);
     player = new Player(this, 32, Number(this.game.config.height) - 150);
   }
 
