@@ -1,6 +1,6 @@
 import Phaser from 'phaser';
 
-import { platform, sky, sprites, star } from '../assets';
+import { sprites } from '../assets';
 import { Scene, Texture } from '../types';
 
 export default class Boot extends Phaser.Scene {
@@ -13,9 +13,6 @@ export default class Boot extends Phaser.Scene {
       frameWidth: 16,
       frameHeight: 16,
     });
-    this.load.image(Texture.Ground, platform);
-    this.load.image(Texture.Sky, sky);
-    this.load.image(Texture.Star, star);
   }
 
   create() {
