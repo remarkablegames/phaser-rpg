@@ -10,8 +10,8 @@ enum Animation {
 }
 
 enum Velocity {
-  Horizontal = 80,
-  Vertical = 80,
+  Horizontal = 100,
+  Vertical = 100,
 }
 
 let cursors: Phaser.Types.Input.Keyboard.CursorKeys;
