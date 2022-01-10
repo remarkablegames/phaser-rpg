@@ -1,16 +1,17 @@
 import Phaser from 'phaser';
 
-import { Texture } from '../types';
+import { Image } from '../types';
 
 enum Animation {
   Left = 'Left',
   Right = 'Right',
-  Turn = 'Turn',
+  Up = 'Up',
+  Down = 'Down',
 }
 
-enum Speed {
-  Horizontal = 160,
-  Vertical = 330,
+enum Velocity {
+  Horizontal = 100,
+  Vertical = 100,
 }
 
 let cursors: Phaser.Types.Input.Keyboard.CursorKeys;
@@ -22,10 +23,10 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     scene: Phaser.Scene,
     x: number,
     y: number,
-    texture?: string,
-    frame?: string | number
+    texture = Image.Spaceman,
+    frame = 1
   ) {
-    super(scene, x, y, Texture.Dude);
+    super(scene, x, y, texture, frame);
 
     // Add the sprite to the scene.
     scene.add.existing(this);
@@ -36,35 +37,45 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     // Add cursor keys.
     cursors = scene.input.keyboard.createCursorKeys();
 
-    if (this.body instanceof Phaser.Physics.Arcade.Body) {
-      // Player physics properties. Give the little guy some bounce.
-      this.body.setBounceY(0.2).setCollideWorldBounds(true);
-    }
-
     // Create left animation.
     this.anims.create({
       key: Animation.Left,
-      frames: this.anims.generateFrameNumbers(Texture.Dude, {
-        start: 0,
-        end: 3,
+      frames: this.anims.generateFrameNumbers(Image.Spaceman, {
+        start: 8,
+        end: 9,
       }),
       frameRate: 10,
       repeat: -1,
     });
 
-    // Create turn animation.
-    this.anims.create({
-      key: Animation.Turn,
-      frames: [{ key: Texture.Dude, frame: 4 }],
-      frameRate: 20,
-    });
-
     // Create right animation.
     this.anims.create({
       key: Animation.Right,
-      frames: this.anims.generateFrameNumbers(Texture.Dude, {
-        start: 5,
-        end: 8,
+      frames: this.anims.generateFrameNumbers(Image.Spaceman, {
+        start: 1,
+        end: 2,
+      }),
+      frameRate: 10,
+      repeat: -1,
+    });
+
+    // Create up animation.
+    this.anims.create({
+      key: Animation.Up,
+      frames: this.anims.generateFrameNumbers(Image.Spaceman, {
+        start: 11,
+        end: 13,
+      }),
+      frameRate: 10,
+      repeat: -1,
+    });
+
+    // Create down animation.
+    this.anims.create({
+      key: Animation.Down,
+      frames: this.anims.generateFrameNumbers(Image.Spaceman, {
+        start: 4,
+        end: 6,
       }),
       frameRate: 10,
       repeat: -1,
@@ -76,27 +87,37 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
       return;
     }
 
+    this.body.setVelocity(0);
+
     switch (true) {
-      // Move to the left.
+      // Move left.
       case cursors.left.isDown:
-        this.body.setVelocityX(-Speed.Horizontal);
         this.anims.play(Animation.Left, true);
+        this.body.setVelocityX(-Velocity.Horizontal);
         break;
-      // Move to the right.
+
+      // Move right.
       case cursors.right.isDown:
-        this.body.setVelocityX(Speed.Horizontal);
         this.anims.play(Animation.Right, true);
+        this.body.setVelocityX(Velocity.Horizontal);
         break;
+
+      // Move up.
+      case cursors.up.isDown:
+        this.anims.play(Animation.Up, true);
+        this.body.setVelocityY(-Velocity.Vertical);
+        break;
+
+      // Move down.
+      case cursors.down.isDown:
+        this.anims.play(Animation.Down, true);
+        this.body.setVelocityY(Velocity.Vertical);
+        break;
+
       // Stand still.
       default:
-        this.body.setVelocityX(0);
-        this.anims.play(Animation.Turn);
+        this.anims.stop();
         break;
-    }
-
-    // Allow player to jump if sprite is touching the ground.
-    if (cursors.up.isDown && this.body.touching.down) {
-      this.body.setVelocityY(-Speed.Vertical);
     }
   }
 }

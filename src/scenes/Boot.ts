@@ -1,7 +1,7 @@
 import Phaser from 'phaser';
 
-import { dude, platform, sky, star } from '../assets';
-import { Scene, Texture } from '../types';
+import { sprites, tiles } from '../assets';
+import { Image, Scene, Tilemap } from '../types';
 
 export default class Boot extends Phaser.Scene {
   constructor() {
@@ -9,13 +9,12 @@ export default class Boot extends Phaser.Scene {
   }
 
   preload() {
-    this.load.spritesheet(Texture.Dude, dude, {
-      frameWidth: 32,
-      frameHeight: 48,
+    this.load.spritesheet(Image.Spaceman, sprites.spaceman, {
+      frameWidth: 16,
+      frameHeight: 16,
     });
-    this.load.image(Texture.Ground, platform);
-    this.load.image(Texture.Sky, sky);
-    this.load.image(Texture.Star, star);
+    this.load.image(Image.Desert, tiles.desert);
+    this.load.tilemapTiledJSON(Tilemap.Desert, tiles.map);
   }
 
   create() {
