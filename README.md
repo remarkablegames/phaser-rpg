@@ -82,7 +82,7 @@ Build the production app locally:
 npm run build
 
 # if your app is hosted at a subdirectory
-mv build $(node -p "require('./package').name") # web-app-template
+mv build $(node -p "require('./package').name")
 
 # if your app is hosted at the root
 cd build
@@ -107,7 +107,7 @@ Don't forget to clean up the build directory after you're done:
 
 ```sh
 # if your app is hosted at a subdirectory
-rm -rf $(node -p "require('./package').name") # web-app-template
+rm -rf $(node -p "require('./package').name")
 
 # if your app is hosted at the root
 rm -rf build
