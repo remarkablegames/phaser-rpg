@@ -5,18 +5,13 @@
 /.pnp
 .pnp.js
 
-# testing
-/coverage
-
-# production
-/build
+# parcel
+/dist
+/.parcel-cache
 
 # misc
+*.swp
 .DS_Store
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
 
 npm-debug.log*
 yarn-debug.log*

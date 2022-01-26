@@ -26,7 +26,7 @@ export default class Main extends Phaser.Scene {
     this.cameras.main.setZoom(2);
   }
 
-  update(time: number, delta: number) {
+  update() {
     player.update();
   }
 }
