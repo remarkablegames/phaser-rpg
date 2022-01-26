@@ -4,7 +4,6 @@ on: [push, pull_request]
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
 
     steps:
       - name: Checkout repository
@@ -15,7 +14,7 @@ jobs:
       - name: Use Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: 14
+          node-version: 16
 
       # - name: Cache dependencies
       #   uses: actions/cache@v2
@@ -36,15 +35,22 @@ jobs:
       - name: ESLint
         run: npm run lint
 
-      - name: Test
-        run: npm test -- --ci --colors
+      - name: Type check
+        run: npm run tsc
+
+      - name: Read package version
+        run: echo ::set-output name=VERSION::$(jq -r .version package.json)
+        id: package
 
       - name: Build
-        run: npm run build
+        # run: npm run build -- --public-url https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}
+        run: npm run build -- --public-url https://remarkablegames.org/${{ github.event.repository.name }}
+        env:
+          VERSION: ${{ steps.package.outputs.VERSION }}
 
       - name: Deploy
         if: github.ref == 'refs/heads/master'
         uses: JamesIves/github-pages-deploy-action@4.1.7
         with:
           branch: gh-pages
-          folder: build
+          folder: dist

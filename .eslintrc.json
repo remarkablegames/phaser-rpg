@@ -1,9 +1,7 @@
 {
-  "extends": [
-    "@descriptive/eslint-config-web-app",
-    "@descriptive/eslint-config-web-app/jest"
-  ],
-  "plugins": ["prettier", "simple-import-sort"],
+  "parser": "@typescript-eslint/parser",
+  "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended"],
+  "plugins": ["@typescript-eslint", "prettier", "simple-import-sort"],
   "rules": {
     "no-debugger": "error",
     "no-console": "error",
