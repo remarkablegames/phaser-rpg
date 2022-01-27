@@ -14,10 +14,8 @@ enum Velocity {
   Vertical = 100,
 }
 
-let cursors: Phaser.Types.Input.Keyboard.CursorKeys;
-
 export default class Player extends Phaser.Physics.Arcade.Sprite {
-  static key = 'PlayerSprite';
+  cursors: Phaser.Types.Input.Keyboard.CursorKeys;
 
   constructor(
     scene: Phaser.Scene,
@@ -28,16 +26,21 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
   ) {
     super(scene, x, y, texture, frame);
 
-    // Add the sprite to the scene.
+    // Add the sprite to the scene
     scene.add.existing(this);
 
-    // Enable physics for the sprite.
+    // Enable physics for the sprite
     scene.physics.world.enable(this);
 
-    // Add cursor keys.
-    cursors = scene.input.keyboard.createCursorKeys();
+    // Add cursor keys
+    this.cursors = scene.input.keyboard.createCursorKeys();
 
-    // Create left animation.
+    // Create sprite animations
+    this.createAnimations();
+  }
+
+  private createAnimations() {
+    // Create left animation
     this.anims.create({
       key: Animation.Left,
       frames: this.anims.generateFrameNumbers(Image.Spaceman, {
@@ -48,7 +51,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
       repeat: -1,
     });
 
-    // Create right animation.
+    // Create right animation
     this.anims.create({
       key: Animation.Right,
       frames: this.anims.generateFrameNumbers(Image.Spaceman, {
@@ -59,7 +62,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
       repeat: -1,
     });
 
-    // Create up animation.
+    // Create up animation
     this.anims.create({
       key: Animation.Up,
       frames: this.anims.generateFrameNumbers(Image.Spaceman, {
@@ -70,7 +73,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
       repeat: -1,
     });
 
-    // Create down animation.
+    // Create down animation
     this.anims.create({
       key: Animation.Down,
       frames: this.anims.generateFrameNumbers(Image.Spaceman, {
@@ -90,31 +93,31 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     this.body.setVelocity(0);
 
     switch (true) {
-      // Move left.
-      case cursors.left.isDown:
+      // Move left
+      case this.cursors.left.isDown:
         this.anims.play(Animation.Left, true);
         this.body.setVelocityX(-Velocity.Horizontal);
         break;
 
-      // Move right.
-      case cursors.right.isDown:
+      // Move right
+      case this.cursors.right.isDown:
         this.anims.play(Animation.Right, true);
         this.body.setVelocityX(Velocity.Horizontal);
         break;
 
-      // Move up.
-      case cursors.up.isDown:
+      // Move up
+      case this.cursors.up.isDown:
         this.anims.play(Animation.Up, true);
         this.body.setVelocityY(-Velocity.Vertical);
         break;
 
-      // Move down.
-      case cursors.down.isDown:
+      // Move down
+      case this.cursors.down.isDown:
         this.anims.play(Animation.Down, true);
         this.body.setVelocityY(Velocity.Vertical);
         break;
 
-      // Stand still.
+      // Stand still
       default:
         this.anims.stop();
         break;
