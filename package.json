@@ -6,7 +6,7 @@
   "source": "public/index.html",
   "scripts": {
     "build": "parcel build",
-    "clean": "rm -rf dist/",
+    "clean": "rm -rf .parcel-cache/ dist/",
     "lint": "eslint --ignore-path .gitignore .",
     "lint:fix": "npm run lint -- --fix",
     "postinstall": "husky install",
