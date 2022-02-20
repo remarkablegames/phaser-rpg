@@ -1,6 +1,6 @@
 import Phaser from 'phaser';
 
-import { Image } from '../types';
+import { key } from '../data';
 
 enum Animation {
   Left = 'Left',
@@ -15,13 +15,14 @@ enum Velocity {
 }
 
 export default class Player extends Phaser.Physics.Arcade.Sprite {
+  body!: Phaser.Physics.Arcade.Body;
   cursors: Phaser.Types.Input.Keyboard.CursorKeys;
 
   constructor(
     scene: Phaser.Scene,
     x: number,
     y: number,
-    texture = Image.Spaceman,
+    texture = key.image.spaceman,
     frame = 1
   ) {
     super(scene, x, y, texture, frame);
@@ -43,7 +44,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     // Create left animation
     this.anims.create({
       key: Animation.Left,
-      frames: this.anims.generateFrameNumbers(Image.Spaceman, {
+      frames: this.anims.generateFrameNumbers(key.image.spaceman, {
         start: 8,
         end: 9,
       }),
@@ -54,7 +55,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     // Create right animation
     this.anims.create({
       key: Animation.Right,
-      frames: this.anims.generateFrameNumbers(Image.Spaceman, {
+      frames: this.anims.generateFrameNumbers(key.image.spaceman, {
         start: 1,
         end: 2,
       }),
@@ -65,7 +66,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     // Create up animation
     this.anims.create({
       key: Animation.Up,
-      frames: this.anims.generateFrameNumbers(Image.Spaceman, {
+      frames: this.anims.generateFrameNumbers(key.image.spaceman, {
         start: 11,
         end: 13,
       }),
@@ -76,7 +77,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     // Create down animation
     this.anims.create({
       key: Animation.Down,
-      frames: this.anims.generateFrameNumbers(Image.Spaceman, {
+      frames: this.anims.generateFrameNumbers(key.image.spaceman, {
         start: 4,
         end: 6,
       }),
@@ -86,10 +87,6 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
   }
 
   update() {
-    if (!(this.body instanceof Phaser.Physics.Arcade.Body)) {
-      return;
-    }
-
     this.body.setVelocity(0);
 
     switch (true) {

@@ -1,32 +1,32 @@
 import Phaser from 'phaser';
 
+import { key } from '../data';
 import { Player } from '../sprites';
-import { Image, Layer, Scene, Tilemap, Tileset } from '../types';
-
-let player: Player;
 
 export default class Main extends Phaser.Scene {
+  private player!: Player;
+
   constructor() {
-    super({ key: Scene.Main });
+    super({ key: key.scene.main });
   }
 
   create() {
-    const map = this.make.tilemap({ key: Tilemap.Desert });
-    const tiles = map.addTilesetImage(Tileset.Desert, Image.Desert);
-    const layer = map.createLayer(Layer.Ground, tiles, 0, 0);
+    const map = this.make.tilemap({ key: key.tilemap.map });
+    const tiles = map.addTilesetImage('Desert', key.image.desert);
+    const layer = map.createLayer('Ground', tiles, 0, 0);
 
     this.physics.world.bounds.width = layer.width;
     this.physics.world.bounds.height = layer.height;
 
-    player = new Player(this, 32, Number(this.game.config.height) - 150);
-    player.setCollideWorldBounds(true);
+    this.player = new Player(this, 32, Number(this.game.config.height) - 150);
+    this.player.setCollideWorldBounds(true);
 
     this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
-    this.cameras.main.startFollow(player);
+    this.cameras.main.startFollow(this.player);
     this.cameras.main.setZoom(2);
   }
 
   update() {
-    player.update();
+    this.player.update();
   }
 }
