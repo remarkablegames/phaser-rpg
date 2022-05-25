@@ -20,7 +20,7 @@
     "@commitlint/cli": "^17.0.1",
     "@commitlint/config-conventional": "^17.0.0",
     "@parcel/packager-raw-url": "^2.4.1",
-    "@parcel/transformer-webmanifest": "^2.4.1",
+    "@parcel/transformer-webmanifest": "^2.5.0",
     "@types/gtag.js": "^0.0.10",
     "@typescript-eslint/eslint-plugin": "^5.26.0",
     "@typescript-eslint/parser": "^5.26.0",
