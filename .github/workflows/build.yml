@@ -7,17 +7,17 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0
 
       - name: Use Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: 16
 
       # - name: Cache dependencies
-      #   uses: actions/cache@v2
+      #   uses: actions/cache@v3
       #   with:
       #     path: |
       #       node_modules
@@ -39,19 +39,17 @@ jobs:
         run: npm run tsc
 
       - name: Read package version
-        run: echo ::set-output name=VERSION::$(jq -r .version package.json)
-        id: package
+        run: echo "VERSION=$(jq -r .version package.json)" >> $GITHUB_ENV
 
       - name: Build
         # run: npm run build -- --public-url https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}
         run: npm run build -- --public-url https://remarkablegames.org/${{ github.event.repository.name }}
         env:
           GOOGLE_ANALYTICS_ID: ${{ secrets.GOOGLE_ANALYTICS_ID }}
-          VERSION: ${{ steps.package.outputs.VERSION }}
 
       - name: Deploy
         if: github.ref == 'refs/heads/master'
-        uses: JamesIves/github-pages-deploy-action@4.1.7
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages
           folder: dist
