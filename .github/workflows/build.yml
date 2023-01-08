@@ -29,12 +29,13 @@ jobs:
       - name: Type check
         run: npm run tsc
 
-      - name: Read package version
-        run: echo "VERSION=$(jq -r .version package.json)" >> $GITHUB_ENV
+      - name: Set environment variables
+        run: |
+          echo "VERSION=$(jq -r .version package.json)" >> $GITHUB_ENV
+          echo "URL=$(jq -r .homepage package.json)" >> $GITHUB_ENV
 
       - name: Build
-        # run: npm run build -- --public-url https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}
-        run: npm run build -- --public-url https://remarkablegames.org/${{ github.event.repository.name }}
+        run: npm run build -- --public-url ${{ env.URL }}
         env:
           GOOGLE_ANALYTICS_ID: ${{ secrets.GOOGLE_ANALYTICS_ID }}
 

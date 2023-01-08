@@ -13,6 +13,7 @@
     "start": "parcel --open",
     "tsc": "tsc --noEmit"
   },
+  "homepage": "https://remarkablegames.org/phaser-rpg/",
   "dependencies": {
     "phaser": "3.55.2"
   },

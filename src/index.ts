@@ -12,7 +12,7 @@ new Phaser.Game({
   height: 600, // 768
   zoom: 2,
   title: 'Phaser RPG',
-  url: 'https://remarkablegames.org/phaser-rpg/',
+  url: process.env.URL,
   version: process.env.VERSION,
   scene: scenes,
   physics: {
