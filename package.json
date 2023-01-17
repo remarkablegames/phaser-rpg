@@ -23,7 +23,7 @@
     "@parcel/packager-raw-url": "2.8.2",
     "@parcel/transformer-webmanifest": "2.8.2",
     "@types/gtag.js": "0.0.12",
-    "@typescript-eslint/eslint-plugin": "5.48.1",
+    "@typescript-eslint/eslint-plugin": "5.48.2",
     "@typescript-eslint/parser": "5.48.1",
     "eslint": "8.32.0",
     "eslint-plugin-prettier": "4.2.1",
