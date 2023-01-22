@@ -9,9 +9,9 @@
     "clean": "rm -rf .parcel-cache/ dist/",
     "lint": "eslint --ignore-path .gitignore .",
     "lint:fix": "npm run lint -- --fix",
+    "lint:tsc": "tsc --noEmit",
     "postinstall": "husky install",
-    "start": "parcel --open",
-    "tsc": "tsc --noEmit"
+    "start": "parcel --open"
   },
   "homepage": "https://remarkablegames.org/phaser-rpg/",
   "dependencies": {
