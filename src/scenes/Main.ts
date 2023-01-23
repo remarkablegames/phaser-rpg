@@ -1,9 +1,9 @@
-import Phaser from 'phaser';
+import { Scene } from 'phaser';
 
 import { key } from '../data';
 import { Player } from '../sprites';
 
-export default class Main extends Phaser.Scene {
+export default class Main extends Scene {
   private player!: Player;
 
   constructor() {
@@ -11,7 +11,7 @@ export default class Main extends Phaser.Scene {
   }
 
   create() {
-    const map = this.make.tilemap({ key: key.tilemap.map });
+    const map = this.make.tilemap({ key: key.tilemap.desert });
     const tiles = map.addTilesetImage('Desert', key.image.desert);
     const layer = map.createLayer('Ground', tiles, 0, 0);
 

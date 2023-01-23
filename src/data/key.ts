@@ -9,7 +9,7 @@ const scene = {
 } as const;
 
 const tilemap = {
-  map: 'map',
+  desert: 'desert',
 } as const;
 
 export const key = {

@@ -14,7 +14,7 @@ export default class Boot extends Scene {
       frameHeight: 16,
     });
     this.load.image(key.image.desert, assets.tilesets.desert);
-    this.load.tilemapTiledJSON(key.tilemap.map, assets.tilemaps.desert);
+    this.load.tilemapTiledJSON(key.tilemap.desert, assets.tilemaps.desert);
   }
 
   create() {
