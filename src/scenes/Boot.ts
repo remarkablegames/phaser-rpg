@@ -1,9 +1,9 @@
-import Phaser from 'phaser';
+import { Scene } from 'phaser';
 
 import * as assets from '../assets';
 import { key } from '../data';
 
-export default class Boot extends Phaser.Scene {
+export default class Boot extends Scene {
   constructor() {
     super({ key: key.scene.boot });
   }
@@ -13,8 +13,8 @@ export default class Boot extends Phaser.Scene {
       frameWidth: 16,
       frameHeight: 16,
     });
-    this.load.image(key.image.desert, assets.tiles.desert);
-    this.load.tilemapTiledJSON(key.tilemap.map, assets.tiles.map);
+    this.load.image(key.image.desert, assets.tilesets.desert);
+    this.load.tilemapTiledJSON(key.tilemap.map, assets.tilemaps.desert);
   }
 
   create() {

@@ -109,7 +109,7 @@
   "tilesets": [
     {
       "firstgid": 1,
-      "image": "desert.png",
+      "image": "../tilesets/desert.png",
       "imageheight": 199,
       "imagewidth": 265,
       "margin": 1,

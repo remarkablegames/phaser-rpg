@@ -1,2 +1,3 @@
 export * as sprites from './sprites';
-export * as tiles from './tiles';
+export * as tilemaps from './tilemaps';
+export * as tilesets from './tilesets';
