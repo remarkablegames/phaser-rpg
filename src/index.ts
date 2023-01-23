@@ -10,7 +10,6 @@ const isProduction = process.env.NODE_ENV === 'production';
 new Phaser.Game({
   width: 800, // 1024
   height: 600, // 768
-  zoom: 2,
   title: 'Phaser RPG',
   url: process.env.URL,
   version: process.env.VERSION,
@@ -18,9 +17,6 @@ new Phaser.Game({
   physics: {
     default: 'arcade',
     arcade: {
-      gravity: {
-        y: 0,
-      },
       debug: !isProduction,
     },
   },
