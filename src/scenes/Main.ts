@@ -7,7 +7,7 @@ export default class Main extends Scene {
   private player!: Player;
 
   constructor() {
-    super({ key: key.scene.main });
+    super(key.scene.main);
   }
 
   create() {

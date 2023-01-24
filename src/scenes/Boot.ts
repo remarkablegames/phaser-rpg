@@ -5,7 +5,7 @@ import { key } from '../data';
 
 export default class Boot extends Scene {
   constructor() {
-    super({ key: key.scene.boot });
+    super(key.scene.boot);
   }
 
   preload() {
