@@ -5,6 +5,7 @@ const atlas = {
 const image = {
   desert: 'desert',
   spaceman: 'spaceman',
+  tuxemon: 'tuxemon',
 } as const;
 
 const scene = {
@@ -14,6 +15,7 @@ const scene = {
 
 const tilemap = {
   desert: 'desert',
+  tuxemon: 'tuxemon',
 } as const;
 
 export const key = {
