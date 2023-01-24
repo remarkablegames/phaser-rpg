@@ -1,10 +1,12 @@
-import { Scene } from 'phaser';
+import Phaser from 'phaser';
 
 import { key } from '../data';
 import { Player } from '../sprites';
+import { isProduction } from '../utils';
 
-export default class Main extends Scene {
+export default class Main extends Phaser.Scene {
   private player!: Player;
+  private isDebug = false;
 
   constructor() {
     super(key.scene.main);
@@ -48,6 +50,33 @@ export default class Main extends Scene {
 
     // Set the bounds of the camera
     this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
+
+    this.renderDebug(worldLayer);
+  }
+
+  /**
+   * Debug graphics.
+   *
+   * @param tilemapLayer - Tilemap layer.
+   */
+  private renderDebug(tilemapLayer: Phaser.Tilemaps.TilemapLayer) {
+    if (isProduction) {
+      return;
+    }
+
+    const graphics = this.add.graphics().setAlpha(0).setDepth(20);
+
+    // Create worldLayer collision graphic above the player, but below the help text
+    tilemapLayer.renderDebug(graphics, {
+      tileColor: null, // Color of non-colliding tiles
+      collidingTileColor: new Phaser.Display.Color(243, 134, 48, 255), // Color of colliding tiles
+      faceColor: new Phaser.Display.Color(40, 39, 37, 255), // Color of colliding face edges
+    });
+
+    this.input.keyboard.on('keydown-D', () => {
+      this.isDebug = !this.isDebug;
+      graphics.setAlpha(this.isDebug ? 0.75 : 0);
+    });
   }
 
   update() {
