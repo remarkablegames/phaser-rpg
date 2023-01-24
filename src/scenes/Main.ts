@@ -43,14 +43,11 @@ export default class Main extends Scene {
 
     this.player = new Player(this, spawnPoint.x || 0, spawnPoint.y || 0);
 
-    // Watch the player and worldLayer for collisions, for the duration of the scene:
+    // Watch the player and worldLayer for collisions
     this.physics.add.collider(this.player, worldLayer);
 
-    this.player.setCollideWorldBounds(true);
-
+    // Set the bounds of the camera
     this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
-    this.cameras.main.startFollow(this.player);
-    this.cameras.main.setZoom(1);
   }
 
   update() {

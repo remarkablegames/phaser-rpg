@@ -34,8 +34,15 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     scene.physics.world.enable(this);
 
     // The image has a bit of whitespace so use setSize and
-    // setOffset to control the size of the player's body.
+    // setOffset to control the size of the player's body
     this.setSize(32, 42).setOffset(0, 22);
+
+    // Collide the sprite body with the world boundary
+    this.setCollideWorldBounds(true);
+
+    // Set the camera to follow the game object
+    scene.cameras.main.startFollow(this);
+    scene.cameras.main.setZoom(1);
 
     // Add cursor keys
     this.cursors = scene.input.keyboard.createCursorKeys();
