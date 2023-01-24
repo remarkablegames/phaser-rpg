@@ -1,8 +1,7 @@
 import Phaser from 'phaser';
 
 import scenes from './scenes';
-
-const isProduction = process.env.NODE_ENV === 'production';
+import { isDevelopment, isProduction } from './utils';
 
 /**
  * https://photonstorm.github.io/phaser3-docs/Phaser.Types.Core.html#.GameConfig
@@ -17,7 +16,7 @@ new Phaser.Game({
   physics: {
     default: 'arcade',
     arcade: {
-      debug: !isProduction,
+      debug: isDevelopment,
     },
   },
   disableContextMenu: isProduction,
