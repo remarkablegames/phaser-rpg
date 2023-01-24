@@ -3,7 +3,6 @@ const atlas = {
 } as const;
 
 const image = {
-  desert: 'desert',
   spaceman: 'spaceman',
   tuxemon: 'tuxemon',
 } as const;
@@ -14,7 +13,6 @@ const scene = {
 } as const;
 
 const tilemap = {
-  desert: 'desert',
   tuxemon: 'tuxemon',
 } as const;
 

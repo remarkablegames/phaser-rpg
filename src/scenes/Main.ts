@@ -21,7 +21,7 @@ export default class Main extends Scene {
     );
 
     // Parameters: layer name (or index) from Tiled, tileset, x, y
-    const belowLayer = map.createLayer('Below Player', tileset, 0, 0);
+    map.createLayer('Below Player', tileset, 0, 0);
     const worldLayer = map.createLayer('World', tileset, 0, 0);
     const aboveLayer = map.createLayer('Above Player', tileset, 0, 0);
 
