@@ -4,6 +4,8 @@
 
 The template is based off of [`phaser-template`](https://github.com/remarkablegames/phaser-template).
 
+The example is inspired by [`phaser-3-tilemap-blog-posts`](https://github.com/mikewesthad/phaser-3-tilemap-blog-posts/tree/master/examples/post-1) (see [Medium story](https://medium.com/@michaelwesthadley/958fc7e6bbd6)).
+
 ## Prerequisites
 
 - [Node.js](https://nodejs.org/en/download/)
