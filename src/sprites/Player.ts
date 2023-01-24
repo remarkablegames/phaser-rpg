@@ -10,8 +10,8 @@ enum Animation {
 }
 
 enum Velocity {
-  Horizontal = 100,
-  Vertical = 100,
+  Horizontal = 175,
+  Vertical = 175,
 }
 
 export default class Player extends Phaser.Physics.Arcade.Sprite {
@@ -106,37 +106,72 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
   }
 
   update() {
+    const prevVelocity = this.body.velocity.clone();
+
+    // Stop any previous movement from the last frame
     this.body.setVelocity(0);
 
+    // Horizontal movement
     switch (true) {
-      // Move left
       case this.cursors.left.isDown:
-        this.anims.play(Animation.Left, true);
         this.body.setVelocityX(-Velocity.Horizontal);
         break;
 
-      // Move right
       case this.cursors.right.isDown:
-        this.anims.play(Animation.Right, true);
         this.body.setVelocityX(Velocity.Horizontal);
         break;
+    }
 
-      // Move up
+    // Vertical movement
+    switch (true) {
       case this.cursors.up.isDown:
-        this.anims.play(Animation.Up, true);
         this.body.setVelocityY(-Velocity.Vertical);
         break;
 
-      // Move down
       case this.cursors.down.isDown:
-        this.anims.play(Animation.Down, true);
         this.body.setVelocityY(Velocity.Vertical);
         break;
+    }
 
-      // Stand still
+    // Normalize and scale the velocity so that player can't move faster along a diagonal
+    this.body.velocity.normalize().scale(Velocity.Horizontal);
+
+    // Update the animation last and give left/right animations precedence over up/down animations
+    switch (true) {
+      case this.cursors.left.isDown:
+        this.anims.play(Animation.Left, true);
+        break;
+
+      case this.cursors.right.isDown:
+        this.anims.play(Animation.Right, true);
+        break;
+
+      case this.cursors.up.isDown:
+        this.anims.play(Animation.Up, true);
+        break;
+
+      case this.cursors.down.isDown:
+        this.anims.play(Animation.Down, true);
+        break;
+
       default:
         this.anims.stop();
-        break;
+
+        // If we were moving, pick an idle frame to use
+        switch (true) {
+          case prevVelocity.x < 0:
+            this.setTexture(key.atlas.player, 'misa-left');
+            break;
+          case prevVelocity.x > 0:
+            this.setTexture(key.atlas.player, 'misa-right');
+            break;
+          case prevVelocity.y < 0:
+            this.setTexture(key.atlas.player, 'misa-back');
+            break;
+          case prevVelocity.y > 0:
+            this.setTexture(key.atlas.player, 'misa-front');
+            break;
+        }
     }
   }
 }
