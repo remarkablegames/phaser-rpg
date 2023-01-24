@@ -15,6 +15,7 @@ export default class Boot extends Scene {
     });
     this.load.image(key.image.desert, assets.tilesets.desert);
     this.load.tilemapTiledJSON(key.tilemap.desert, assets.tilemaps.desert);
+    this.load.atlas(key.atlas.player, assets.atlas.image, assets.atlas.data);
   }
 
   create() {

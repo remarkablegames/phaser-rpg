@@ -22,8 +22,8 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     scene: Phaser.Scene,
     x: number,
     y: number,
-    texture = key.image.spaceman,
-    frame = 1
+    texture = key.atlas.player,
+    frame = 'misa-front'
   ) {
     super(scene, x, y, texture, frame);
 
@@ -32,6 +32,10 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
 
     // Enable physics for the sprite
     scene.physics.world.enable(this);
+
+    // The image has a bit of whitespace so use setSize and
+    // setOffset to control the size of the player's body.
+    this.setSize(32, 42).setOffset(0, 22);
 
     // Add cursor keys
     this.cursors = scene.input.keyboard.createCursorKeys();
@@ -44,9 +48,11 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     // Create left animation
     this.anims.create({
       key: Animation.Left,
-      frames: this.anims.generateFrameNumbers(key.image.spaceman, {
-        start: 8,
-        end: 9,
+      frames: this.anims.generateFrameNames(key.atlas.player, {
+        prefix: 'misa-left-walk.',
+        start: 0,
+        end: 3,
+        zeroPad: 3,
       }),
       frameRate: 10,
       repeat: -1,
@@ -55,9 +61,11 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     // Create right animation
     this.anims.create({
       key: Animation.Right,
-      frames: this.anims.generateFrameNumbers(key.image.spaceman, {
-        start: 1,
-        end: 2,
+      frames: this.anims.generateFrameNames(key.atlas.player, {
+        prefix: 'misa-right-walk.',
+        start: 0,
+        end: 3,
+        zeroPad: 3,
       }),
       frameRate: 10,
       repeat: -1,
@@ -66,9 +74,11 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     // Create up animation
     this.anims.create({
       key: Animation.Up,
-      frames: this.anims.generateFrameNumbers(key.image.spaceman, {
-        start: 11,
-        end: 13,
+      frames: this.anims.generateFrameNames(key.atlas.player, {
+        prefix: 'misa-back-walk.',
+        start: 0,
+        end: 3,
+        zeroPad: 3,
       }),
       frameRate: 10,
       repeat: -1,
@@ -77,9 +87,11 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     // Create down animation
     this.anims.create({
       key: Animation.Down,
-      frames: this.anims.generateFrameNumbers(key.image.spaceman, {
-        start: 4,
-        end: 6,
+      frames: this.anims.generateFrameNames(key.atlas.player, {
+        prefix: 'misa-front-walk.',
+        start: 0,
+        end: 3,
+        zeroPad: 3,
       }),
       frameRate: 10,
       repeat: -1,

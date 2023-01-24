@@ -1,3 +1,7 @@
+const atlas = {
+  player: 'player',
+} as const;
+
 const image = {
   desert: 'desert',
   spaceman: 'spaceman',
@@ -13,6 +17,7 @@ const tilemap = {
 } as const;
 
 export const key = {
+  atlas,
   image,
   scene,
   tilemap,
