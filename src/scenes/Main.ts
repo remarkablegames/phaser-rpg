@@ -20,12 +20,12 @@ export default class Main extends Phaser.Scene {
     const tileset = map.addTilesetImage(
       'tuxemon-sample-32px-extruded',
       key.image.tuxemon
-    );
+    )!;
 
     // Parameters: layer name (or index) from Tiled, tileset, x, y
     map.createLayer('Below Player', tileset, 0, 0);
-    const worldLayer = map.createLayer('World', tileset, 0, 0);
-    const aboveLayer = map.createLayer('Above Player', tileset, 0, 0);
+    const worldLayer = map.createLayer('World', tileset, 0, 0)!;
+    const aboveLayer = map.createLayer('Above Player', tileset, 0, 0)!;
 
     worldLayer.setCollisionByProperty({ collides: true });
     this.physics.world.bounds.width = worldLayer.width;
@@ -41,7 +41,7 @@ export default class Main extends Phaser.Scene {
     const spawnPoint = map.findObject(
       'Objects',
       (object) => object.name === 'Spawn Point'
-    );
+    )!;
 
     this.player = new Player(this, spawnPoint.x || 0, spawnPoint.y || 0);
 
@@ -73,7 +73,7 @@ export default class Main extends Phaser.Scene {
       faceColor: new Phaser.Display.Color(40, 39, 37, 255), // Color of colliding face edges
     });
 
-    this.input.keyboard.on('keydown-D', () => {
+    this.input.keyboard!.on('keydown-D', () => {
       this.isDebug = !this.isDebug;
       graphics.setAlpha(this.isDebug ? 0.75 : 0);
     });

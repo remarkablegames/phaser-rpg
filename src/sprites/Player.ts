@@ -45,7 +45,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     scene.cameras.main.setZoom(1);
 
     // Add cursor keys
-    this.cursors = scene.input.keyboard.createCursorKeys();
+    this.cursors = scene.input.keyboard!.createCursorKeys();
 
     // Create sprite animations
     this.createAnimations();
