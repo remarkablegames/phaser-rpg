@@ -20,7 +20,7 @@
   "devDependencies": {
     "@commitlint/cli": "17.6.6",
     "@commitlint/config-conventional": "17.6.6",
-    "@parcel/packager-raw-url": "2.9.2",
+    "@parcel/packager-raw-url": "2.9.3",
     "@parcel/transformer-webmanifest": "2.9.2",
     "@types/gtag.js": "0.0.12",
     "@typescript-eslint/eslint-plugin": "5.61.0",
