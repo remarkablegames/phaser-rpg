@@ -9,10 +9,10 @@ enum Animation {
   Down = 'Down',
 }
 
-enum Velocity {
-  Horizontal = 175,
-  Vertical = 175,
-}
+const Velocity = {
+  Horizontal: 175,
+  Vertical: 175,
+} as const;
 
 export default class Player extends Phaser.Physics.Arcade.Sprite {
   body!: Phaser.Physics.Arcade.Body;
@@ -23,7 +23,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     x: number,
     y: number,
     texture = key.atlas.player,
-    frame = 'misa-front'
+    frame = 'misa-front',
   ) {
     super(scene, x, y, texture, frame);
 

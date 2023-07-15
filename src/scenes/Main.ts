@@ -19,7 +19,7 @@ export default class Main extends Phaser.Scene {
     // the key of the tileset image in Phaser's cache (name used in preload)
     const tileset = map.addTilesetImage(
       'tuxemon-sample-32px-extruded',
-      key.image.tuxemon
+      key.image.tuxemon,
     )!;
 
     // Parameters: layer name (or index) from Tiled, tileset, x, y
@@ -40,7 +40,7 @@ export default class Main extends Phaser.Scene {
     // In the tmx file, there's an object layer with a point named 'Spawn Point'.
     const spawnPoint = map.findObject(
       'Objects',
-      (object) => object.name === 'Spawn Point'
+      (object) => object.name === 'Spawn Point',
     )!;
 
     this.player = new Player(this, spawnPoint.x || 0, spawnPoint.y || 0);
