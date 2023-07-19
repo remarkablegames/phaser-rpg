@@ -19,7 +19,7 @@
   },
   "devDependencies": {
     "@commitlint/cli": "17.6.7",
-    "@commitlint/config-conventional": "17.6.6",
+    "@commitlint/config-conventional": "17.6.7",
     "@parcel/packager-raw-url": "2.9.3",
     "@parcel/transformer-webmanifest": "2.9.3",
     "@types/gtag.js": "0.0.12",
