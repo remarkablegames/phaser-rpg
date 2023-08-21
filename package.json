@@ -29,7 +29,7 @@
     "eslint-plugin-prettier": "5.0.0",
     "eslint-plugin-simple-import-sort": "10.0.0",
     "husky": "8.0.3",
-    "lint-staged": "14.0.0",
+    "lint-staged": "14.0.1",
     "parcel": "2.9.3",
     "prettier": "3.0.2",
     "process": "0.11.10",
