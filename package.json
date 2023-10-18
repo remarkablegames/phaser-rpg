@@ -22,7 +22,7 @@
     "@commitlint/config-conventional": "17.8.0",
     "@parcel/packager-raw-url": "2.10.0",
     "@parcel/transformer-webmanifest": "2.10.0",
-    "@types/gtag.js": "0.0.16",
+    "@types/gtag.js": "0.0.17",
     "@typescript-eslint/eslint-plugin": "6.8.0",
     "@typescript-eslint/parser": "6.8.0",
     "eslint": "8.51.0",
