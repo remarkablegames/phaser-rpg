@@ -21,7 +21,7 @@
     "@commitlint/cli": "18.2.0",
     "@commitlint/config-conventional": "18.1.0",
     "@parcel/packager-raw-url": "2.10.0",
-    "@parcel/transformer-webmanifest": "2.10.0",
+    "@parcel/transformer-webmanifest": "2.10.1",
     "@types/gtag.js": "0.0.17",
     "@typescript-eslint/eslint-plugin": "6.9.1",
     "@typescript-eslint/parser": "6.9.1",
