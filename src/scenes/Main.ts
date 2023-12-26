@@ -2,7 +2,6 @@ import Phaser from 'phaser';
 
 import { key } from '../data';
 import { Player } from '../sprites';
-import { isProduction } from '../utils';
 
 export default class Main extends Phaser.Scene {
   private player!: Player;
@@ -60,7 +59,7 @@ export default class Main extends Phaser.Scene {
    * @param tilemapLayer - Tilemap layer.
    */
   private renderDebug(tilemapLayer: Phaser.Tilemaps.TilemapLayer) {
-    if (isProduction) {
+    if (import.meta.env.PROD) {
       return;
     }
 

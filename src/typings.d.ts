@@ -1,12 +1,14 @@
-/// <reference types="node" />
+/// <reference types="vite/client" />
 
-declare namespace NodeJS {
-  interface ProcessEnv {
-    readonly GOOGLE_ANALYTICS_ID: string;
-    readonly NODE_ENV: 'development' | 'production';
-    readonly URL: string;
-    readonly VERSION: string;
-  }
+interface ImportMetaEnv {
+  readonly DEV: boolean;
+  readonly VITE_APP_HOMEPAGE: string;
+  readonly VITE_APP_VERSION: string;
+  readonly VITE_GOOGLE_ANALYTICS_ID: string;
+}
+
+interface ImportMeta {
+  readonly env: ImportMetaEnv;
 }
 
 declare module '*.avif' {
