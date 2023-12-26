@@ -1,7 +1,6 @@
 import Phaser from 'phaser';
 
 import scenes from './scenes';
-import { isDevelopment, isProduction } from './utils';
 
 /**
  * https://photonstorm.github.io/phaser3-docs/Phaser.Types.Core.html#.GameConfig
@@ -10,16 +9,16 @@ new Phaser.Game({
   width: 800, // 1024
   height: 600, // 768
   title: 'Phaser RPG',
-  url: process.env.URL,
-  version: process.env.VERSION,
+  url: import.meta.env.VITE_APP_HOMEPAGE,
+  version: import.meta.env.VITE_APP_VERSION,
   scene: scenes,
   physics: {
     default: 'arcade',
     arcade: {
-      debug: isDevelopment,
+      debug: import.meta.env.DEV,
     },
   },
-  disableContextMenu: isProduction,
+  disableContextMenu: import.meta.env.PROD,
   backgroundColor: '#000',
   scale: {
     mode: Phaser.Scale.FIT,

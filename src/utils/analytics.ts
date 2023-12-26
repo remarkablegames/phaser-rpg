@@ -5,13 +5,15 @@
  */
 export const gtag = window.gtag;
 
-gtag('config', process.env.GOOGLE_ANALYTICS_ID);
+const googleAnalyticsId = import.meta.env.VITE_GOOGLE_ANALYTICS_ID;
+
+gtag('config', googleAnalyticsId);
 
 (window as unknown as Record<string, boolean>)[
-  `ga-disable-${process.env.GOOGLE_ANALYTICS_ID}`
-] = process.env.NODE_ENV !== 'production';
+  `ga-disable-${googleAnalyticsId}`
+] = import.meta.env.DEV;
 
 const script = document.createElement('script');
 script.async = true;
-script.src = `https://www.googletagmanager.com/gtag/js?id=${process.env.GOOGLE_ANALYTICS_ID}`;
+script.src = `https://www.googletagmanager.com/gtag/js?id=${googleAnalyticsId}`;
 document.head.appendChild(script);
