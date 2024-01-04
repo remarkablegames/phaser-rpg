@@ -52,57 +52,67 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
   }
 
   private createAnimations() {
+    const anims = this.scene.anims;
+
     // Create left animation
-    this.anims.create({
-      key: Animation.Left,
-      frames: this.anims.generateFrameNames(key.atlas.player, {
-        prefix: 'misa-left-walk.',
-        start: 0,
-        end: 3,
-        zeroPad: 3,
-      }),
-      frameRate: 10,
-      repeat: -1,
-    });
+    if (!anims.exists(Animation.Left)) {
+      anims.create({
+        key: Animation.Left,
+        frames: anims.generateFrameNames(key.atlas.player, {
+          prefix: 'misa-left-walk.',
+          start: 0,
+          end: 3,
+          zeroPad: 3,
+        }),
+        frameRate: 10,
+        repeat: -1,
+      });
+    }
 
     // Create right animation
-    this.anims.create({
-      key: Animation.Right,
-      frames: this.anims.generateFrameNames(key.atlas.player, {
-        prefix: 'misa-right-walk.',
-        start: 0,
-        end: 3,
-        zeroPad: 3,
-      }),
-      frameRate: 10,
-      repeat: -1,
-    });
+    if (!anims.exists(Animation.Right)) {
+      anims.create({
+        key: Animation.Right,
+        frames: anims.generateFrameNames(key.atlas.player, {
+          prefix: 'misa-right-walk.',
+          start: 0,
+          end: 3,
+          zeroPad: 3,
+        }),
+        frameRate: 10,
+        repeat: -1,
+      });
+    }
 
     // Create up animation
-    this.anims.create({
-      key: Animation.Up,
-      frames: this.anims.generateFrameNames(key.atlas.player, {
-        prefix: 'misa-back-walk.',
-        start: 0,
-        end: 3,
-        zeroPad: 3,
-      }),
-      frameRate: 10,
-      repeat: -1,
-    });
+    if (!anims.exists(Animation.Up)) {
+      anims.create({
+        key: Animation.Up,
+        frames: anims.generateFrameNames(key.atlas.player, {
+          prefix: 'misa-back-walk.',
+          start: 0,
+          end: 3,
+          zeroPad: 3,
+        }),
+        frameRate: 10,
+        repeat: -1,
+      });
+    }
 
     // Create down animation
-    this.anims.create({
-      key: Animation.Down,
-      frames: this.anims.generateFrameNames(key.atlas.player, {
-        prefix: 'misa-front-walk.',
-        start: 0,
-        end: 3,
-        zeroPad: 3,
-      }),
-      frameRate: 10,
-      repeat: -1,
-    });
+    if (!anims.exists(Animation.Down)) {
+      anims.create({
+        key: Animation.Down,
+        frames: anims.generateFrameNames(key.atlas.player, {
+          prefix: 'misa-front-walk.',
+          start: 0,
+          end: 3,
+          zeroPad: 3,
+        }),
+        frameRate: 10,
+        repeat: -1,
+      });
+    }
   }
 
   update() {
