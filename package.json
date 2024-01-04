@@ -4,7 +4,7 @@
   "description": "A template for building Phaser RPG games.",
   "author": "Mark <mark@remarkablemark.org>",
   "scripts": {
-    "build": "vite build",
+    "build": "npm run clean && vite build",
     "clean": "rm -rf dist",
     "lint": "eslint --ignore-path .gitignore .",
     "lint:fix": "npm run lint -- --fix",
