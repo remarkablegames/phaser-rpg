@@ -16,6 +16,20 @@
 
     <link rel="stylesheet" href="src/style.css" />
 
+    <!--
+      GitHub Corners. See https://github.com/remarkablemark/github-corners
+    -->
+    <% if (process.env.BUNDLE !== 'true') { %>
+    <script
+      src="https://unpkg.com/github-corners/dist/embed.min.js"
+      data-href="https://github.com/remarkablegames/phaser-rpg"
+      data-target="_blank"
+      async
+      defer
+    ></script>
+    <link rel="stylesheet" href="src/github-corners.css" />
+    <% } %>
+
     <title>Phaser RPG | remarkablegames</title>
   </head>
   <body>
@@ -31,16 +45,5 @@
     </script>
 
     <script type="module" src="src/index.ts"></script>
-
-    <!--
-      GitHub Corners. See https://github.com/remarkablemark/github-corners
-    -->
-    <script
-      src="https://unpkg.com/github-corners/dist/embed.min.js"
-      data-href="https://github.com/remarkablegames/phaser-rpg"
-      data-target="_blank"
-      async
-      defer
-    ></script>
   </body>
 </html>
