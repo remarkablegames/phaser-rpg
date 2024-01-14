@@ -2,16 +2,17 @@
 
 <kbd>phaser-rpg</kbd> is a template for making [Phaser](https://phaser.io/) RPG games.
 
-The template is based off of [`phaser-template`](https://github.com/remarkablegames/phaser-template).
+Inspired by [`phaser-3-tilemap-blog-posts`](https://github.com/mikewesthad/phaser-3-tilemap-blog-posts/tree/master/examples/post-1) (see [Medium story](https://medium.com/@michaelwesthadley/958fc7e6bbd6)).
 
-The example is inspired by [`phaser-3-tilemap-blog-posts`](https://github.com/mikewesthad/phaser-3-tilemap-blog-posts/tree/master/examples/post-1) (see [Medium story](https://medium.com/@michaelwesthadley/958fc7e6bbd6)).
+Demo:
 
-[Play the demo.](https://remarkablegames.org/phaser-rpg)
+- [remarkablegames](https://remarkablegames.org/phaser-rpg)
 
-The template is built with:
+Stack:
 
-- [GitHub Pages](https://pages.github.com/)
+- [Phaser](https://phaser.io/)
 - [Vite](https://vitejs.dev/)
+- [GitHub Pages](https://pages.github.com/)
 
 ## Prerequisites
 
