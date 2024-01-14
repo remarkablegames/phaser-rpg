@@ -67,29 +67,11 @@ The build is minified and the filenames include the hashes.
 
 Your game is ready to be deployed!
 
-## Upload
+### `npm run bundle`
 
-Open `index.html` and remove the GitHub Corners script.
+Builds the game and packages it into a Zip file in the `dist` folder.
 
-Build the game artifacts:
-
-```sh
-npm run build
-```
-
-Replace absolute URLs with relative URLs:
-
-```sh
-sed -i '' -e 's|src="/|src="|g' -e 's|href="/|href="|g' dist/index.html
-```
-
-Zip the game artifacts (replace `<version>` with the semver):
-
-```sh
-zip -r <version>.zip dist
-```
-
-Upload the zip archive to the game platform.
+Your game can be uploaded to your server, [Itch.io](https://itch.io/), [Newgrounds](https://www.newgrounds.com/), etc.
 
 ## License
 
