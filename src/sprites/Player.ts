@@ -9,6 +9,11 @@ enum Animation {
   Down = 'Down',
 }
 
+type Cursors = Record<
+  'w' | 'a' | 's' | 'd' | 'up' | 'left' | 'down' | 'right',
+  Phaser.Input.Keyboard.Key
+>;
+
 const Velocity = {
   Horizontal: 175,
   Vertical: 175,
@@ -16,7 +21,7 @@ const Velocity = {
 
 export default class Player extends Phaser.Physics.Arcade.Sprite {
   body!: Phaser.Physics.Arcade.Body;
-  cursors: Phaser.Types.Input.Keyboard.CursorKeys;
+  cursors: Cursors;
 
   constructor(
     scene: Phaser.Scene,
@@ -45,10 +50,19 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     scene.cameras.main.setZoom(1);
 
     // Add cursor keys
-    this.cursors = scene.input.keyboard!.createCursorKeys();
+    this.cursors = this.createCursorKeys();
 
     // Create sprite animations
     this.createAnimations();
+  }
+
+  /**
+   * Track the arrow keys & WASD.
+   */
+  private createCursorKeys() {
+    return this.scene.input.keyboard!.addKeys(
+      'w,a,s,d,up,left,down,right',
+    ) as Cursors;
   }
 
   private createAnimations() {
@@ -116,56 +130,65 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
   }
 
   update() {
-    const prevVelocity = this.body.velocity.clone();
+    const { anims, body, cursors } = this;
+    const prevVelocity = body.velocity.clone();
 
     // Stop any previous movement from the last frame
-    this.body.setVelocity(0);
+    body.setVelocity(0);
 
     // Horizontal movement
     switch (true) {
-      case this.cursors.left.isDown:
-        this.body.setVelocityX(-Velocity.Horizontal);
+      case cursors.left.isDown:
+      case cursors.a.isDown:
+        body.setVelocityX(-Velocity.Horizontal);
         break;
 
-      case this.cursors.right.isDown:
-        this.body.setVelocityX(Velocity.Horizontal);
+      case cursors.right.isDown:
+      case cursors.d.isDown:
+        body.setVelocityX(Velocity.Horizontal);
         break;
     }
 
     // Vertical movement
     switch (true) {
-      case this.cursors.up.isDown:
-        this.body.setVelocityY(-Velocity.Vertical);
+      case cursors.up.isDown:
+      case cursors.w.isDown:
+        body.setVelocityY(-Velocity.Vertical);
         break;
 
-      case this.cursors.down.isDown:
-        this.body.setVelocityY(Velocity.Vertical);
+      case cursors.down.isDown:
+      case cursors.s.isDown:
+        body.setVelocityY(Velocity.Vertical);
         break;
     }
 
     // Normalize and scale the velocity so that player can't move faster along a diagonal
-    this.body.velocity.normalize().scale(Velocity.Horizontal);
+    body.velocity.normalize().scale(Velocity.Horizontal);
 
     // Update the animation last and give left/right animations precedence over up/down animations
     switch (true) {
-      case this.cursors.left.isDown:
-        this.anims.play(Animation.Left, true);
+      case cursors.left.isDown:
+      case cursors.a.isDown:
+        anims.play(Animation.Left, true);
         break;
 
-      case this.cursors.right.isDown:
-        this.anims.play(Animation.Right, true);
+      case cursors.right.isDown:
+      case cursors.d.isDown:
+        anims.play(Animation.Right, true);
         break;
 
-      case this.cursors.up.isDown:
-        this.anims.play(Animation.Up, true);
+      case cursors.up.isDown:
+      case cursors.w.isDown:
+        anims.play(Animation.Up, true);
         break;
 
-      case this.cursors.down.isDown:
-        this.anims.play(Animation.Down, true);
+      case cursors.down.isDown:
+      case cursors.s.isDown:
+        anims.play(Animation.Down, true);
         break;
 
       default:
-        this.anims.stop();
+        anims.stop();
 
         // If we were moving, pick an idle frame to use
         switch (true) {
