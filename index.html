@@ -27,7 +27,15 @@
       async
       defer
     ></script>
-    <link rel="stylesheet" href="src/github-corners.css" />
+    <style>
+      .github-corner > svg {
+        opacity: 0.5;
+        transition: opacity 0.4s;
+      }
+      .github-corner:hover > svg {
+        opacity: 1;
+      }
+    </style>
     <% } %>
 
     <title>Phaser RPG | remarkablegames</title>

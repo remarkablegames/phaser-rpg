@@ -1,8 +1,0 @@
-.github-corner > svg {
-  opacity: 0.5;
-  transition: opacity 0.4s;
-}
-
-.github-corner:hover > svg {
-  opacity: 1;
-}
