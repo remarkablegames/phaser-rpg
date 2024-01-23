@@ -5,5 +5,5 @@ export default defineConfig({
   build: {
     assetsInlineLimit: 0,
   },
-  plugins: [createHtmlPlugin({ viteNext: true })],
+  plugins: [createHtmlPlugin()],
 });
