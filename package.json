@@ -20,7 +20,7 @@
     "phaser-jsx": "0.4.0"
   },
   "devDependencies": {
-    "@commitlint/cli": "18.6.1",
+    "@commitlint/cli": "19.0.2",
     "@commitlint/config-conventional": "18.6.2",
     "@types/gtag.js": "0.0.19",
     "@typescript-eslint/eslint-plugin": "7.1.0",
