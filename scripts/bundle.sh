@@ -1,13 +1,6 @@
 #!/usr/bin/env sh
 
-BUNDLE=true npm run build
-
-# replace absolute URLs with relative URLs
-if [[ $(uname) == 'Darwin' ]]; then
-  sed -i '' -e 's|src="/|src="|g' -e 's|href="/|href="|g' dist/index.html
-else
-  sed -i -e 's|src="/|src="|g' -e 's|href="/|href="|g' dist/index.html
-fi
+BUNDLE=true npm run build -- --base=./
 
 # zip file
 if [[ $CI != 'true' ]]; then
