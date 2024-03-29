@@ -39,16 +39,20 @@ jobs:
       - name: Install dependencies
         run: npm ci --prefer-offline
 
-      - name: Read package version
-        run: echo "VERSION=$(jq -r .version package.json)" >> $GITHUB_ENV
+      - name: Set environment variables
+        run: |
+          echo "VITE_APP_HOMEPAGE=$(jq -r .homepage package.json)" >> $GITHUB_ENV
+          echo "VITE_APP_VERSION=$(jq -r .version package.json)" >> $GITHUB_ENV
 
       - name: Build
         run: npm run bundle
+        env:
+          VITE_GOOGLE_ANALYTICS_ID: ${{ secrets.GOOGLE_ANALYTICS_ID }}
 
       - name: Setup butler
         uses: remarkablegames/setup-butler@v1
 
       - name: Upload to itch.io
-        run: butler push dist ${{ github.repository }}:html5 --userversion ${{ env.VERSION }}
+        run: butler push dist ${{ github.repository }}:html5 --userversion ${{ env.VITE_APP_VERSION }}
         env:
           BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }}
