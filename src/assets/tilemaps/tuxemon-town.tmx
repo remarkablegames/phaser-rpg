@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.2" tiledversion="1.2.2" orientation="orthogonal" renderorder="right-down" width="40" height="40" tilewidth="32" tileheight="32" infinite="0" nextlayerid="5" nextobjectid="277">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="40" height="40" tilewidth="32" tileheight="32" infinite="0" nextlayerid="5" nextobjectid="277">
  <properties>
   <property name="edges" value="clamped"/>
  </properties>
  <tileset firstgid="1" name="tuxmon-sample-32px-extruded" tilewidth="32" tileheight="32" spacing="2" margin="1" tilecount="720" columns="24">
   <grid orientation="orthogonal" width="16" height="16"/>
-  <image source="../tilesets/tuxmon-sample-32px-extruded.png" width="816" height="1020"/>
-  <terraintypes>
-   <terrain name="Path" tile="173"/>
-   <terrain name="Grass" tile="125"/>
-  </terraintypes>
+  <image source="../tilesets/tuxemon-sample-32px-extruded.png" width="816" height="1020"/>
   <tile id="0">
    <properties>
     <property name="collides" type="bool" value="false"/>
@@ -635,7 +631,7 @@
     <property name="collides" type="bool" value="false"/>
    </properties>
   </tile>
-  <tile id="125" terrain="1,1,1,1">
+  <tile id="125">
    <properties>
     <property name="collides" type="bool" value="false"/>
    </properties>
@@ -750,17 +746,17 @@
     <property name="collides" type="bool" value="false"/>
    </properties>
   </tile>
-  <tile id="148" terrain="1,1,1,0">
+  <tile id="148">
    <properties>
     <property name="collides" type="bool" value="false"/>
    </properties>
   </tile>
-  <tile id="149" terrain="1,1,0,0">
+  <tile id="149">
    <properties>
     <property name="collides" type="bool" value="false"/>
    </properties>
   </tile>
-  <tile id="150" terrain="1,1,0,1">
+  <tile id="150">
    <properties>
     <property name="collides" type="bool" value="false"/>
    </properties>
@@ -860,27 +856,27 @@
     <property name="collides" type="bool" value="true"/>
    </properties>
   </tile>
-  <tile id="170" terrain="0,0,0,1">
+  <tile id="170">
    <properties>
     <property name="collides" type="bool" value="false"/>
    </properties>
   </tile>
-  <tile id="171" terrain="0,0,1,0">
+  <tile id="171">
    <properties>
     <property name="collides" type="bool" value="false"/>
    </properties>
   </tile>
-  <tile id="172" terrain="1,0,1,0">
+  <tile id="172">
    <properties>
     <property name="collides" type="bool" value="false"/>
    </properties>
   </tile>
-  <tile id="173" terrain="0,0,0,0">
+  <tile id="173">
    <properties>
     <property name="collides" type="bool" value="false"/>
    </properties>
   </tile>
-  <tile id="174" terrain="0,1,0,1">
+  <tile id="174">
    <properties>
     <property name="collides" type="bool" value="false"/>
    </properties>
@@ -980,27 +976,27 @@
     <property name="collides" type="bool" value="true"/>
    </properties>
   </tile>
-  <tile id="194" terrain="0,1,0,0">
+  <tile id="194">
    <properties>
     <property name="collides" type="bool" value="false"/>
    </properties>
   </tile>
-  <tile id="195" terrain="1,0,0,0">
+  <tile id="195">
    <properties>
     <property name="collides" type="bool" value="false"/>
    </properties>
   </tile>
-  <tile id="196" terrain="1,0,1,1">
+  <tile id="196">
    <properties>
     <property name="collides" type="bool" value="false"/>
    </properties>
   </tile>
-  <tile id="197" terrain="0,0,1,1">
+  <tile id="197">
    <properties>
     <property name="collides" type="bool" value="false"/>
    </properties>
   </tile>
-  <tile id="198" terrain="0,1,1,1">
+  <tile id="198">
    <properties>
     <property name="collides" type="bool" value="false"/>
    </properties>
@@ -3370,6 +3366,26 @@
     <property name="collides" type="bool" value="false"/>
    </properties>
   </tile>
+  <wangsets>
+   <wangset name="Terrains" type="corner" tile="-1">
+    <wangcolor name="Path" color="#ff0000" tile="173" probability="1"/>
+    <wangcolor name="Grass" color="#00ff00" tile="125" probability="1"/>
+    <wangtile tileid="125" wangid="0,2,0,2,0,2,0,2"/>
+    <wangtile tileid="148" wangid="0,2,0,1,0,2,0,2"/>
+    <wangtile tileid="149" wangid="0,2,0,1,0,1,0,2"/>
+    <wangtile tileid="150" wangid="0,2,0,2,0,1,0,2"/>
+    <wangtile tileid="170" wangid="0,1,0,2,0,1,0,1"/>
+    <wangtile tileid="171" wangid="0,1,0,1,0,2,0,1"/>
+    <wangtile tileid="172" wangid="0,1,0,1,0,2,0,2"/>
+    <wangtile tileid="173" wangid="0,1,0,1,0,1,0,1"/>
+    <wangtile tileid="174" wangid="0,2,0,2,0,1,0,1"/>
+    <wangtile tileid="194" wangid="0,2,0,1,0,1,0,1"/>
+    <wangtile tileid="195" wangid="0,1,0,1,0,1,0,2"/>
+    <wangtile tileid="196" wangid="0,1,0,2,0,2,0,2"/>
+    <wangtile tileid="197" wangid="0,1,0,2,0,2,0,1"/>
+    <wangtile tileid="198" wangid="0,2,0,2,0,2,0,1"/>
+   </wangset>
+  </wangsets>
  </tileset>
  <layer id="1" name="Below Player" width="40" height="40">
   <data encoding="csv">
