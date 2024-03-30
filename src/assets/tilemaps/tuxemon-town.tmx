@@ -3519,7 +3519,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <objectgroup id="4" name="Objects" visible="0">
+ <objectgroup id="4" name="Objects">
   <object id="275" name="Spawn Point" x="352" y="1216">
    <point/>
   </object>
