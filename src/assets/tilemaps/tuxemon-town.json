@@ -1,4 +1,5 @@
 {
+  "compressionlevel": -1,
   "height": 40,
   "infinite": false,
   "layers": [
@@ -332,7 +333,7 @@
       ],
       "opacity": 1,
       "type": "objectgroup",
-      "visible": false,
+      "visible": true,
       "x": 0,
       "y": 0
     }
@@ -348,7 +349,7 @@
     }
   ],
   "renderorder": "right-down",
-  "tiledversion": "1.2.2",
+  "tiledversion": "1.10.2",
   "tileheight": 32,
   "tilesets": [
     {
@@ -365,16 +366,6 @@
       "margin": 1,
       "name": "tuxemon-sample-32px-extruded",
       "spacing": 2,
-      "terrains": [
-        {
-          "name": "Path",
-          "tile": 173
-        },
-        {
-          "name": "Grass",
-          "tile": 125
-        }
-      ],
       "tilecount": 720,
       "tileheight": 32,
       "tiles": [
@@ -778,6 +769,7 @@
             }
           ]
         },
+
         {
           "id": 40,
           "properties": [
@@ -1178,6 +1170,7 @@
             }
           ]
         },
+
         {
           "id": 80,
           "properties": [
@@ -1578,6 +1571,7 @@
             }
           ]
         },
+
         {
           "id": 120,
           "properties": [
@@ -1636,8 +1630,7 @@
               "type": "bool",
               "value": false
             }
-          ],
-          "terrain": [1, 1, 1, 1]
+          ]
         },
         {
           "id": 126,
@@ -1867,8 +1860,7 @@
               "type": "bool",
               "value": false
             }
-          ],
-          "terrain": [1, 1, 1, 0]
+          ]
         },
         {
           "id": 149,
@@ -1878,8 +1870,7 @@
               "type": "bool",
               "value": false
             }
-          ],
-          "terrain": [1, 1, 0, 0]
+          ]
         },
         {
           "id": 150,
@@ -1889,8 +1880,7 @@
               "type": "bool",
               "value": false
             }
-          ],
-          "terrain": [1, 1, 0, 1]
+          ]
         },
         {
           "id": 151,
@@ -1982,6 +1972,7 @@
             }
           ]
         },
+
         {
           "id": 160,
           "properties": [
@@ -2090,8 +2081,7 @@
               "type": "bool",
               "value": false
             }
-          ],
-          "terrain": [0, 0, 0, 1]
+          ]
         },
         {
           "id": 171,
@@ -2101,8 +2091,7 @@
               "type": "bool",
               "value": false
             }
-          ],
-          "terrain": [0, 0, 1, 0]
+          ]
         },
         {
           "id": 172,
@@ -2112,8 +2101,7 @@
               "type": "bool",
               "value": false
             }
-          ],
-          "terrain": [1, 0, 1, 0]
+          ]
         },
         {
           "id": 173,
@@ -2123,8 +2111,7 @@
               "type": "bool",
               "value": false
             }
-          ],
-          "terrain": [0, 0, 0, 0]
+          ]
         },
         {
           "id": 174,
@@ -2134,8 +2121,7 @@
               "type": "bool",
               "value": false
             }
-          ],
-          "terrain": [0, 1, 0, 1]
+          ]
         },
         {
           "id": 175,
@@ -2335,8 +2321,7 @@
               "type": "bool",
               "value": false
             }
-          ],
-          "terrain": [0, 1, 0, 0]
+          ]
         },
         {
           "id": 195,
@@ -2346,8 +2331,7 @@
               "type": "bool",
               "value": false
             }
-          ],
-          "terrain": [1, 0, 0, 0]
+          ]
         },
         {
           "id": 196,
@@ -2357,8 +2341,7 @@
               "type": "bool",
               "value": false
             }
-          ],
-          "terrain": [1, 0, 1, 1]
+          ]
         },
         {
           "id": 197,
@@ -2368,8 +2351,7 @@
               "type": "bool",
               "value": false
             }
-          ],
-          "terrain": [0, 0, 1, 1]
+          ]
         },
         {
           "id": 198,
@@ -2379,8 +2361,7 @@
               "type": "bool",
               "value": false
             }
-          ],
-          "terrain": [0, 1, 1, 1]
+          ]
         },
         {
           "id": 199,
@@ -2392,6 +2373,7 @@
             }
           ]
         },
+
         {
           "id": 200,
           "properties": [
@@ -2792,6 +2774,7 @@
             }
           ]
         },
+
         {
           "id": 240,
           "properties": [
@@ -3192,6 +3175,7 @@
             }
           ]
         },
+
         {
           "id": 280,
           "properties": [
@@ -3592,6 +3576,7 @@
             }
           ]
         },
+
         {
           "id": 320,
           "properties": [
@@ -3992,6 +3977,7 @@
             }
           ]
         },
+
         {
           "id": 360,
           "properties": [
@@ -4392,6 +4378,7 @@
             }
           ]
         },
+
         {
           "id": 400,
           "properties": [
@@ -4792,6 +4779,7 @@
             }
           ]
         },
+
         {
           "id": 440,
           "properties": [
@@ -5192,6 +5180,7 @@
             }
           ]
         },
+
         {
           "id": 480,
           "properties": [
@@ -5592,6 +5581,7 @@
             }
           ]
         },
+
         {
           "id": 520,
           "properties": [
@@ -5992,6 +5982,7 @@
             }
           ]
         },
+
         {
           "id": 560,
           "properties": [
@@ -6392,6 +6383,7 @@
             }
           ]
         },
+
         {
           "id": 600,
           "properties": [
@@ -6792,6 +6784,7 @@
             }
           ]
         },
+
         {
           "id": 640,
           "properties": [
@@ -7113,11 +7106,90 @@
           ]
         }
       ],
-      "tilewidth": 32
+      "tilewidth": 32,
+      "wangsets": [
+        {
+          "colors": [
+            {
+              "color": "#ff0000",
+              "name": "Path",
+              "probability": 1,
+              "tile": 173
+            },
+            {
+              "color": "#00ff00",
+              "name": "Grass",
+              "probability": 1,
+              "tile": 125
+            }
+          ],
+          "name": "Terrains",
+          "tile": -1,
+          "type": "corner",
+          "wangtiles": [
+            {
+              "tileid": 125,
+              "wangid": [0, 2, 0, 2, 0, 2, 0, 2]
+            },
+            {
+              "tileid": 148,
+              "wangid": [0, 2, 0, 1, 0, 2, 0, 2]
+            },
+            {
+              "tileid": 149,
+              "wangid": [0, 2, 0, 1, 0, 1, 0, 2]
+            },
+            {
+              "tileid": 150,
+              "wangid": [0, 2, 0, 2, 0, 1, 0, 2]
+            },
+            {
+              "tileid": 170,
+              "wangid": [0, 1, 0, 2, 0, 1, 0, 1]
+            },
+            {
+              "tileid": 171,
+              "wangid": [0, 1, 0, 1, 0, 2, 0, 1]
+            },
+            {
+              "tileid": 172,
+              "wangid": [0, 1, 0, 1, 0, 2, 0, 2]
+            },
+            {
+              "tileid": 173,
+              "wangid": [0, 1, 0, 1, 0, 1, 0, 1]
+            },
+            {
+              "tileid": 174,
+              "wangid": [0, 2, 0, 2, 0, 1, 0, 1]
+            },
+            {
+              "tileid": 194,
+              "wangid": [0, 2, 0, 1, 0, 1, 0, 1]
+            },
+            {
+              "tileid": 195,
+              "wangid": [0, 1, 0, 1, 0, 1, 0, 2]
+            },
+            {
+              "tileid": 196,
+              "wangid": [0, 1, 0, 2, 0, 2, 0, 2]
+            },
+            {
+              "tileid": 197,
+              "wangid": [0, 1, 0, 2, 0, 2, 0, 1]
+            },
+            {
+              "tileid": 198,
+              "wangid": [0, 2, 0, 2, 0, 2, 0, 1]
+            }
+          ]
+        }
+      ]
     }
   ],
   "tilewidth": 32,
   "type": "map",
-  "version": 1.2,
+  "version": "1.10",
   "width": 40
 }
