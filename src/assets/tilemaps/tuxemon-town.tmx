@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="40" height="40" tilewidth="32" tileheight="32" infinite="0" nextlayerid="5" nextobjectid="277">
+ <editorsettings>
+  <export target="tuxemon-town.json" format="json"/>
+ </editorsettings>
  <properties>
   <property name="edges" value="clamped"/>
  </properties>
- <tileset firstgid="1" name="tuxmon-sample-32px-extruded" tilewidth="32" tileheight="32" spacing="2" margin="1" tilecount="720" columns="24">
+ <tileset firstgid="1" name="tuxemon-sample-32px-extruded" tilewidth="32" tileheight="32" spacing="2" margin="1" tilecount="720" columns="24">
   <grid orientation="orthogonal" width="16" height="16"/>
   <image source="../tilesets/tuxemon-sample-32px-extruded.png" width="816" height="1020"/>
   <tile id="0">
