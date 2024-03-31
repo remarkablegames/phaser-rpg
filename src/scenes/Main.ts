@@ -47,10 +47,10 @@ export default class Main extends Phaser.Scene {
     // In the tmx file, there's an object layer with a point named 'Spawn Point'.
     const spawnPoint = map.findObject(
       TilemapLayer.Objects,
-      (object) => object.name === TilemapObject.SpawnPoint,
+      ({ name }) => name === TilemapObject.SpawnPoint,
     )!;
 
-    this.player = new Player(this, spawnPoint.x || 0, spawnPoint.y || 0);
+    this.player = new Player(this, spawnPoint.x!, spawnPoint.y!);
 
     // Watch the player and worldLayer for collisions
     this.physics.add.collider(this.player, worldLayer);
