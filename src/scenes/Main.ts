@@ -1,5 +1,6 @@
 import Phaser from 'phaser';
 
+import { isDevelopment } from '../constants';
 import { key } from '../data';
 import { Player } from '../sprites';
 
@@ -50,7 +51,9 @@ export default class Main extends Phaser.Scene {
     // Set the bounds of the camera
     this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
 
-    this.renderDebug(worldLayer);
+    if (isDevelopment) {
+      this.renderDebug(worldLayer);
+    }
   }
 
   /**
@@ -59,10 +62,6 @@ export default class Main extends Phaser.Scene {
    * @param tilemapLayer - Tilemap layer.
    */
   private renderDebug(tilemapLayer: Phaser.Tilemaps.TilemapLayer) {
-    if (import.meta.env.PROD) {
-      return;
-    }
-
     const graphics = this.add.graphics().setAlpha(0).setDepth(20);
 
     // Create worldLayer collision graphic above the player, but below the help text
