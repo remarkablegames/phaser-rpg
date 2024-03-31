@@ -3,6 +3,7 @@ import { render } from 'phaser-jsx';
 
 import { TextBox } from '../components';
 import {
+  Depth,
   isDevelopment,
   TilemapLayer,
   TilemapObject,
@@ -43,7 +44,7 @@ export default class Main extends Phaser.Scene {
     // By default, everything gets depth sorted on the screen in the order we created things.
     // We want the "Above Player" layer to sit on top of the player, so we explicitly give it a depth.
     // Higher depths will sit on top of lower depth objects.
-    aboveLayer.setDepth(10);
+    aboveLayer.setDepth(Depth.AbovePlayer);
 
     // Object layers in Tiled let you embed extra info into a map like a spawn point or custom collision shapes.
     // In the tmx file, there's an object layer with a point named 'Spawn Point'.
@@ -73,7 +74,7 @@ export default class Main extends Phaser.Scene {
    * @param tilemapLayer - Tilemap layer.
    */
   private renderDebug(tilemapLayer: Phaser.Tilemaps.TilemapLayer) {
-    const graphics = this.add.graphics().setAlpha(0).setDepth(20);
+    const graphics = this.add.graphics().setAlpha(0).setDepth(Depth.AboveWorld);
 
     // Create worldLayer collision graphic above the player, but below the help text
     tilemapLayer.renderDebug(graphics, {

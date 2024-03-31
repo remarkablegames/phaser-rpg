@@ -1,5 +1,7 @@
 import { Text } from 'phaser-jsx';
 
+import { Depth } from '../constants';
+
 /**
  * Text box that has a "fixed" position on the screen.
  */
@@ -19,7 +21,7 @@ export function TextBox() {
       }}
       scrollFactorX={0}
       scrollFactorY={0}
-      depth={20}
+      depth={Depth.AboveWorld}
     />
   );
 }
