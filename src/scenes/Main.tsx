@@ -1,5 +1,7 @@
 import Phaser from 'phaser';
+import { render } from 'phaser-jsx';
 
+import { TextBox } from '../components';
 import {
   isDevelopment,
   TilemapLayer,
@@ -61,6 +63,8 @@ export default class Main extends Phaser.Scene {
     if (isDevelopment) {
       this.renderDebug(worldLayer);
     }
+
+    render(<TextBox />, this);
   }
 
   /**
