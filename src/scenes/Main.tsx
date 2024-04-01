@@ -65,7 +65,7 @@ export default class Main extends Phaser.Scene {
       this.renderDebug(worldLayer);
     }
 
-    render(<TextBox />, this);
+    render(<TextBox scene={this} text="WASD or arrow keys to move." />, this);
   }
 
   /**
