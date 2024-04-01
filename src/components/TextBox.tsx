@@ -1,10 +1,9 @@
 import type Phaser from 'phaser';
-import { createRef, Text } from 'phaser-jsx';
+import { createRef, Text, useScene } from 'phaser-jsx';
 
 import { Depth } from '../constants';
 
 interface Props {
-  scene: Phaser.Scene;
   text: string;
 }
 
@@ -12,18 +11,19 @@ interface Props {
  * Text box that has a "fixed" position on the screen.
  */
 export function TextBox(props: Props) {
+  const scene = useScene();
   const ref = createRef<Phaser.GameObjects.Text>();
   const repeat = props.text.length - 1;
   let index = 0;
 
-  const timer = props.scene.time.addEvent({
+  const timer = scene.time.addEvent({
     callback() {
       ref.current!.text += props.text[index];
       index++;
 
       if (index >= props.text.length) {
         timer.destroy();
-        props.scene.time.removeEvent(timer);
+        scene.time.removeEvent(timer);
       }
     },
     delay: 100,
