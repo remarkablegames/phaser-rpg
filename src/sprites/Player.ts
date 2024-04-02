@@ -22,6 +22,7 @@ const Velocity = {
 export default class Player extends Phaser.Physics.Arcade.Sprite {
   body!: Phaser.Physics.Arcade.Body;
   cursors: Cursors;
+  selector: Phaser.GameObjects.Rectangle;
 
   constructor(
     scene: Phaser.Scene,
@@ -54,6 +55,12 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
 
     // Create sprite animations
     this.createAnimations();
+
+    // Add selector
+    const box = scene.add.rectangle(0, 0, 16, 16, 0xffffff, 0);
+    this.selector =
+      scene.physics.add.existing<Phaser.GameObjects.Rectangle>(box);
+    this.selector.setPosition(x, y + 40);
   }
 
   /**
@@ -130,7 +137,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
   }
 
   update() {
-    const { anims, body, cursors } = this;
+    const { anims, body, cursors, selector } = this;
     const prevVelocity = body.velocity.clone();
 
     // Stop any previous movement from the last frame
@@ -141,11 +148,13 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
       case cursors.left.isDown:
       case cursors.a.isDown:
         body.setVelocityX(-Velocity.Horizontal);
+        selector.setPosition(body.x - 11, body.y + 22);
         break;
 
       case cursors.right.isDown:
       case cursors.d.isDown:
         body.setVelocityX(Velocity.Horizontal);
+        selector.setPosition(body.x + 42, body.y + 22);
         break;
     }
 
@@ -154,11 +163,13 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
       case cursors.up.isDown:
       case cursors.w.isDown:
         body.setVelocityY(-Velocity.Vertical);
+        selector.setPosition(body.x + 16, body.y - 11);
         break;
 
       case cursors.down.isDown:
       case cursors.s.isDown:
         body.setVelocityY(Velocity.Vertical);
+        selector.setPosition(body.x + 16, body.y + 53);
         break;
     }
 
