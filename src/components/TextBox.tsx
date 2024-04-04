@@ -13,7 +13,6 @@ interface Props {
 export function TextBox(props: Props) {
   const scene = useScene();
   const ref = createRef<Phaser.GameObjects.Text>();
-  const repeat = props.text.length - 1;
   let index = 0;
 
   const timer = scene.time.addEvent({
@@ -22,12 +21,17 @@ export function TextBox(props: Props) {
       index++;
 
       if (index >= props.text.length) {
-        timer.destroy();
-        scene.time.removeEvent(timer);
+        removeTimer(timer, scene);
+
+        const oneshot = scene.time.delayedCall(1500, () => {
+          ref.current!.destroy();
+          removeTimer(oneshot, scene);
+        });
       }
     },
+
     delay: 100,
-    repeat,
+    repeat: props.text.length - 1,
   });
 
   return (
@@ -49,4 +53,9 @@ export function TextBox(props: Props) {
       ref={ref}
     />
   );
+}
+
+function removeTimer(timer: Phaser.Time.TimerEvent, scene: Phaser.Scene) {
+  timer.destroy();
+  scene.time.removeEvent(timer);
 }
