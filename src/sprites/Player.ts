@@ -22,7 +22,7 @@ const Velocity = {
 export default class Player extends Phaser.Physics.Arcade.Sprite {
   body!: Phaser.Physics.Arcade.Body;
   cursors: Cursors;
-  selector: Phaser.GameObjects.Rectangle;
+  selector: Phaser.Physics.Arcade.StaticBody;
 
   constructor(
     scene: Phaser.Scene,
@@ -57,10 +57,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
     this.createAnimations();
 
     // Add selector
-    const box = scene.add.rectangle(0, 0, 16, 16, 0xffffff, 0);
-    this.selector =
-      scene.physics.add.existing<Phaser.GameObjects.Rectangle>(box);
-    this.selector.setPosition(x, y + 40);
+    this.selector = scene.physics.add.staticBody(x - 8, y + 32, 16, 16);
   }
 
   /**
@@ -148,13 +145,15 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
       case cursors.left.isDown:
       case cursors.a.isDown:
         body.setVelocityX(-Velocity.Horizontal);
-        selector.setPosition(body.x - 11, body.y + 22);
+        selector.x = body.x - 18;
+        selector.y = body.y + 14;
         break;
 
       case cursors.right.isDown:
       case cursors.d.isDown:
         body.setVelocityX(Velocity.Horizontal);
-        selector.setPosition(body.x + 42, body.y + 22);
+        selector.x = body.x + 34;
+        selector.y = body.y + 14;
         break;
     }
 
@@ -163,13 +162,15 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
       case cursors.up.isDown:
       case cursors.w.isDown:
         body.setVelocityY(-Velocity.Vertical);
-        selector.setPosition(body.x + 16, body.y - 11);
+        selector.x = body.x + 8;
+        selector.y = body.y - 18;
         break;
 
       case cursors.down.isDown:
       case cursors.s.isDown:
         body.setVelocityY(Velocity.Vertical);
-        selector.setPosition(body.x + 16, body.y + 53);
+        selector.x = body.x + 8;
+        selector.y = body.y + 46;
         break;
     }
 

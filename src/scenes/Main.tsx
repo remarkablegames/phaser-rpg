@@ -108,7 +108,8 @@ export default class Main extends Phaser.Scene {
     let canInteract = true;
 
     this.physics.add.overlap(
-      this.player.selector,
+      this.player
+        .selector as unknown as Phaser.Types.Physics.Arcade.ArcadeColliderType,
       this.sign as unknown as Phaser.Types.Physics.Arcade.ArcadeColliderType,
       () => {
         if (this.player.cursors.space.isDown && canInteract) {
