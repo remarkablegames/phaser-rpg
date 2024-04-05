@@ -11,7 +11,7 @@ interface Props {
 /**
  * Text box that has a "fixed" position on the screen.
  */
-export function TextBox(props: Props) {
+export function Typewriter(props: Props) {
   const scene = useScene();
   const ref = createRef<Phaser.GameObjects.Text>();
   let index = 0;

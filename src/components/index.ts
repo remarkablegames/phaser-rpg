@@ -1,1 +1,1 @@
-export * from './TextBox';
+export * from './Typewriter';

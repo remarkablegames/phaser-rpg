@@ -1,7 +1,7 @@
 import Phaser from 'phaser';
 import { render } from 'phaser-jsx';
 
-import { TextBox } from '../components';
+import { Typewriter } from '../components';
 import {
   Depth,
   isDevelopment,
@@ -74,7 +74,7 @@ export default class Main extends Phaser.Scene {
       this.renderDebug(worldLayer);
     }
 
-    render(<TextBox text="WASD or arrow keys to move." />, this);
+    render(<Typewriter text="WASD or arrow keys to move." />, this);
   }
 
   /**
@@ -109,7 +109,7 @@ export default class Main extends Phaser.Scene {
           canPress = false;
 
           render(
-            <TextBox
+            <Typewriter
               text="Welcome to Phaser RPG!"
               onEnd={() => (canPress = true)}
             />,
