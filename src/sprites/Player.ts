@@ -145,14 +145,14 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
       case cursors.left.isDown:
       case cursors.a.isDown:
         body.setVelocityX(-Velocity.Horizontal);
-        selector.x = body.x - 18;
+        selector.x = body.x - 19;
         selector.y = body.y + 14;
         break;
 
       case cursors.right.isDown:
       case cursors.d.isDown:
         body.setVelocityX(Velocity.Horizontal);
-        selector.x = body.x + 34;
+        selector.x = body.x + 35;
         selector.y = body.y + 14;
         break;
     }
