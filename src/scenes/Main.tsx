@@ -58,7 +58,13 @@ export default class Main extends Phaser.Scene {
       TilemapLayer.Objects,
       ({ name }) => name === TilemapObject.Sign,
     )!;
-    this.sign = this.physics.add.staticBody(sign.x! - 8, sign.y! - 8, 16, 16);
+
+    this.sign = this.physics.add.staticBody(
+      sign.x!,
+      sign.y!,
+      sign.width,
+      sign.height,
+    );
 
     this.player = new Player(this, spawnPoint.x!, spawnPoint.y!);
 

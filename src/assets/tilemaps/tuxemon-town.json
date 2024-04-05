@@ -319,15 +319,15 @@
       "name": "Objects",
       "objects": [
         {
-          "height": 0,
+          "height": 28,
           "id": 277,
           "name": "Sign",
           "rotation": 0,
           "type": "",
           "visible": true,
-          "width": 0,
-          "x": 368,
-          "y": 1104
+          "width": 24,
+          "x": 356,
+          "y": 1082
         },
         {
           "height": 0,
