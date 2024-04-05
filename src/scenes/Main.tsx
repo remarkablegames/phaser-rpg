@@ -62,7 +62,7 @@ export default class Main extends Phaser.Scene {
 
     this.player = new Player(this, spawnPoint.x!, spawnPoint.y!);
 
-    this.addPlayerOverlap();
+    this.enablePlayerSignInteraction();
 
     // Watch the player and worldLayer for collisions
     this.physics.add.collider(this.player, worldLayer);
@@ -98,20 +98,20 @@ export default class Main extends Phaser.Scene {
     });
   }
 
-  private addPlayerOverlap() {
-    let canPress = true;
+  private enablePlayerSignInteraction() {
+    let canInteract = true;
 
     this.physics.add.overlap(
       this.player.selector,
       this.sign as unknown as Phaser.Types.Physics.Arcade.ArcadeColliderType,
       () => {
-        if (this.player.cursors.space.isDown && canPress) {
-          canPress = false;
+        if (this.player.cursors.space.isDown && canInteract) {
+          canInteract = false;
 
           render(
             <Typewriter
               text="Welcome to Phaser RPG!"
-              onEnd={() => (canPress = true)}
+              onEnd={() => (canInteract = true)}
             />,
             this,
           );
