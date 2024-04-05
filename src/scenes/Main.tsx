@@ -15,6 +15,7 @@ import { Player } from '../sprites';
 export default class Main extends Phaser.Scene {
   private player!: Player;
   private isDebug = false;
+  private sign!: Phaser.Physics.Arcade.StaticBody;
 
   constructor() {
     super(key.scene.main);
@@ -53,7 +54,15 @@ export default class Main extends Phaser.Scene {
       ({ name }) => name === TilemapObject.SpawnPoint,
     )!;
 
+    const sign = map.findObject(
+      TilemapLayer.Objects,
+      ({ name }) => name === TilemapObject.Sign,
+    )!;
+    this.sign = this.physics.add.staticBody(sign.x! - 8, sign.y! - 8, 16, 16);
+
     this.player = new Player(this, spawnPoint.x!, spawnPoint.y!);
+
+    this.addPlayerOverlap();
 
     // Watch the player and worldLayer for collisions
     this.physics.add.collider(this.player, worldLayer);
@@ -87,6 +96,31 @@ export default class Main extends Phaser.Scene {
       this.isDebug = !this.isDebug;
       graphics.setAlpha(this.isDebug ? 0.75 : 0);
     });
+  }
+
+  private addPlayerOverlap() {
+    let canPress = true;
+
+    this.physics.add.overlap(
+      this.player.selector,
+      this.sign as unknown as Phaser.Types.Physics.Arcade.ArcadeColliderType,
+      () => {
+        if (this.player.cursors.space.isDown && canPress) {
+          canPress = false;
+
+          render(
+            <TextBox
+              text="Welcome to Phaser RPG!"
+              onEnd={() => (canPress = true)}
+            />,
+            this,
+          );
+        }
+      },
+
+      undefined,
+      this,
+    );
   }
 
   update() {

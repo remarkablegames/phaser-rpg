@@ -10,7 +10,7 @@ enum Animation {
 }
 
 type Cursors = Record<
-  'w' | 'a' | 's' | 'd' | 'up' | 'left' | 'down' | 'right',
+  'w' | 'a' | 's' | 'd' | 'up' | 'left' | 'down' | 'right' | 'space',
   Phaser.Input.Keyboard.Key
 >;
 
@@ -68,7 +68,7 @@ export default class Player extends Phaser.Physics.Arcade.Sprite {
    */
   private createCursorKeys() {
     return this.scene.input.keyboard!.addKeys(
-      'w,a,s,d,up,left,down,right',
+      'w,a,s,d,up,left,down,right,space',
     ) as Cursors;
   }
 

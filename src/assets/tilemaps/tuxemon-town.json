@@ -320,6 +320,17 @@
       "objects": [
         {
           "height": 0,
+          "id": 277,
+          "name": "Sign",
+          "rotation": 0,
+          "type": "",
+          "visible": true,
+          "width": 0,
+          "x": 368,
+          "y": 1104
+        },
+        {
+          "height": 0,
           "id": 275,
           "name": "Spawn Point",
           "point": true,
@@ -339,7 +350,7 @@
     }
   ],
   "nextlayerid": 5,
-  "nextobjectid": 277,
+  "nextobjectid": 278,
   "orientation": "orthogonal",
   "properties": [
     {

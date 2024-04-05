@@ -5,6 +5,7 @@ import { Depth } from '../constants';
 
 interface Props {
   text: string;
+  onEnd?: () => void;
 }
 
 /**
@@ -26,6 +27,7 @@ export function TextBox(props: Props) {
         const oneshot = scene.time.delayedCall(1500, () => {
           ref.current!.destroy();
           removeTimer(oneshot, scene);
+          props.onEnd && props.onEnd();
         });
       }
     },
