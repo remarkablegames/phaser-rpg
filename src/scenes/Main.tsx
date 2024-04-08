@@ -2,13 +2,7 @@ import Phaser from 'phaser';
 import { render } from 'phaser-jsx';
 
 import { TilemapDebug, Typewriter } from '../components';
-import {
-  Depth,
-  isDevelopment,
-  TilemapLayer,
-  TilemapObject,
-  TILESET_NAME,
-} from '../constants';
+import { Depth, TilemapLayer, TilemapObject, TILESET_NAME } from '../constants';
 import { key } from '../data';
 import { Player } from '../sprites';
 
@@ -75,9 +69,7 @@ export default class Main extends Phaser.Scene {
     // Set the bounds of the camera
     this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
 
-    if (isDevelopment) {
-      render(<TilemapDebug tilemapLayer={worldLayer} />, this);
-    }
+    render(<TilemapDebug tilemapLayer={worldLayer} />, this);
 
     render(<Typewriter text="WASD or arrow keys to move." />, this);
   }

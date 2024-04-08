@@ -1,6 +1,6 @@
 import { Graphics, useScene } from 'phaser-jsx';
 
-import { Depth } from '../constants';
+import { Depth, isProduction } from '../constants';
 
 interface Props {
   tilemapLayer: Phaser.Tilemaps.TilemapLayer;
@@ -10,6 +10,10 @@ export function TilemapDebug(props: Props) {
   const scene = useScene();
   let isDebug = false;
   let graphics: Phaser.GameObjects.Graphics;
+
+  if (isProduction) {
+    return null;
+  }
 
   scene.input.keyboard!.on('keydown-SHIFT', () => {
     isDebug = !isDebug;
