@@ -1,7 +1,7 @@
 import Phaser from 'phaser';
 import { render } from 'phaser-jsx';
 
-import { Typewriter } from '../components';
+import { TilemapDebug, Typewriter } from '../components';
 import {
   Depth,
   isDevelopment,
@@ -14,7 +14,6 @@ import { Player } from '../sprites';
 
 export default class Main extends Phaser.Scene {
   private player!: Player;
-  private isDebug = false;
   private sign!: Phaser.Physics.Arcade.StaticBody;
 
   constructor() {
@@ -77,31 +76,10 @@ export default class Main extends Phaser.Scene {
     this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
 
     if (isDevelopment) {
-      this.renderDebug(worldLayer);
+      render(<TilemapDebug tilemapLayer={worldLayer} />, this);
     }
 
     render(<Typewriter text="WASD or arrow keys to move." />, this);
-  }
-
-  /**
-   * Debug graphics.
-   *
-   * @param tilemapLayer - Tilemap layer.
-   */
-  private renderDebug(tilemapLayer: Phaser.Tilemaps.TilemapLayer) {
-    const graphics = this.add.graphics().setAlpha(0).setDepth(Depth.AboveWorld);
-
-    // Create worldLayer collision graphic above the player, but below the help text
-    tilemapLayer.renderDebug(graphics, {
-      tileColor: null, // Color of non-colliding tiles
-      collidingTileColor: new Phaser.Display.Color(243, 134, 48, 255), // Color of colliding tiles
-      faceColor: new Phaser.Display.Color(40, 39, 37, 255), // Color of colliding face edges
-    });
-
-    this.input.keyboard!.on('keydown-SHIFT', () => {
-      this.isDebug = !this.isDebug;
-      graphics.setAlpha(this.isDebug ? 0.75 : 0);
-    });
   }
 
   private enablePlayerSignInteraction() {
