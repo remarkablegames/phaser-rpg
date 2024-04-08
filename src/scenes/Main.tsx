@@ -98,7 +98,7 @@ export default class Main extends Phaser.Scene {
       faceColor: new Phaser.Display.Color(40, 39, 37, 255), // Color of colliding face edges
     });
 
-    this.input.keyboard!.on('keydown-ESC', () => {
+    this.input.keyboard!.on('keydown-SHIFT', () => {
       this.isDebug = !this.isDebug;
       graphics.setAlpha(this.isDebug ? 0.75 : 0);
     });
