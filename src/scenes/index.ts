@@ -1,5 +1,3 @@
-import Boot from './Boot';
-import Main from './Main';
-import Menu from './Menu';
-
-export default [Boot, Main, Menu];
+export * from './Boot';
+export * from './Main';
+export * from './Menu';

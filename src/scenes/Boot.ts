@@ -3,7 +3,7 @@ import { Scene } from 'phaser';
 import * as assets from '../assets';
 import { key } from '../data';
 
-export default class Boot extends Scene {
+export class Boot extends Scene {
   constructor() {
     super(key.scene.boot);
   }

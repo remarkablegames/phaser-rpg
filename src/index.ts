@@ -1,9 +1,9 @@
 import Phaser from 'phaser';
 
-import scenes from './scenes';
+import * as scenes from './scenes';
 
 /**
- * https://photonstorm.github.io/phaser3-docs/Phaser.Types.Core.html#.GameConfig
+ * https://rexrainbow.github.io/phaser3-rex-notes/docs/site/game/
  */
 new Phaser.Game({
   width: 800, // 1024
@@ -11,7 +11,10 @@ new Phaser.Game({
   title: 'Phaser RPG',
   url: import.meta.env.VITE_APP_HOMEPAGE,
   version: import.meta.env.VITE_APP_VERSION,
-  scene: scenes,
+  scene: [
+    scenes.Boot,
+    ...Object.values(scenes).filter((scene) => scene !== scenes.Boot),
+  ],
   physics: {
     default: 'arcade',
     arcade: {

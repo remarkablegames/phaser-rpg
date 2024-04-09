@@ -4,7 +4,7 @@ import { render } from 'phaser-jsx';
 import { Button, Overlay } from '../components';
 import { key } from '../data';
 
-export default class Menu extends Scene {
+export class Menu extends Scene {
   constructor() {
     super(key.scene.menu);
   }

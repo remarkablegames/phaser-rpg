@@ -6,7 +6,7 @@ import { Depth, TilemapLayer, TilemapObject, TILESET_NAME } from '../constants';
 import { key } from '../data';
 import { Player } from '../sprites';
 
-export default class Main extends Phaser.Scene {
+export class Main extends Phaser.Scene {
   private player!: Player;
   private sign!: Phaser.Physics.Arcade.StaticBody;
 
