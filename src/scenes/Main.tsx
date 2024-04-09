@@ -72,6 +72,11 @@ export default class Main extends Phaser.Scene {
     render(<TilemapDebug tilemapLayer={worldLayer} />, this);
 
     render(<Typewriter text="WASD or arrow keys to move." />, this);
+
+    this.input.keyboard!.on('keydown-ESC', () => {
+      this.scene.pause(key.scene.main);
+      this.scene.launch(key.scene.menu);
+    });
   }
 
   private enablePlayerSignInteraction() {
