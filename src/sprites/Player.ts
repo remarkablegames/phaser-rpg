@@ -1,6 +1,6 @@
 import Phaser from 'phaser';
 
-import { key } from '../data';
+import { key } from '../constants';
 
 enum Animation {
   Left = 'Left',

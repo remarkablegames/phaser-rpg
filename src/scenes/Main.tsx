@@ -2,8 +2,13 @@ import Phaser from 'phaser';
 import { render } from 'phaser-jsx';
 
 import { TilemapDebug, Typewriter } from '../components';
-import { Depth, TilemapLayer, TilemapObject, TILESET_NAME } from '../constants';
-import { key } from '../data';
+import {
+  Depth,
+  key,
+  TilemapLayer,
+  TilemapObject,
+  TILESET_NAME,
+} from '../constants';
 import { Player } from '../sprites';
 
 export class Main extends Phaser.Scene {

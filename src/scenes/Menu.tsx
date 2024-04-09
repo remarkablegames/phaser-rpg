@@ -2,7 +2,7 @@ import { Scene } from 'phaser';
 import { render } from 'phaser-jsx';
 
 import { Button, Overlay } from '../components';
-import { key } from '../data';
+import { key } from '../constants';
 
 export class Menu extends Scene {
   constructor() {
