@@ -10,6 +10,7 @@ const image = {
 const scene = {
   boot: 'boot',
   main: 'main',
+  menu: 'menu',
 } as const;
 
 const tilemap = {
