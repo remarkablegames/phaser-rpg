@@ -1,4 +1,5 @@
-import { Text } from 'phaser-jsx';
+import type Phaser from 'phaser';
+import { createRef, Text } from 'phaser-jsx';
 
 interface Props {
   center?: boolean;
@@ -11,12 +12,18 @@ interface Props {
 
 export function Button(props: Props) {
   const { center, children, fixed, onClick, ...textProps } = props;
+  const ref = createRef<Phaser.GameObjects.Text>();
 
   return (
     <Text
       {...textProps}
+      input={{ cursor: 'pointer' }}
+      onPointerDown={onClick}
+      onPointerOver={() => ref.current!.setTint(0xdddddd)}
+      onPointerOut={() => ref.current!.setTint(0xffffff)}
       originX={center ? 0.5 : undefined}
       originY={center ? 0.5 : undefined}
+      ref={ref}
       scrollFactorX={fixed ? 0 : undefined}
       scrollFactorY={fixed ? 0 : undefined}
       style={{
@@ -28,7 +35,6 @@ export function Button(props: Props) {
         padding: { x: 20, y: 10 },
       }}
       text={children}
-      onPointerDown={onClick}
     />
   );
 }
