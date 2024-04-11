@@ -14,13 +14,21 @@ export function Button(props: Props) {
   const { center, children, fixed, onClick, ...textProps } = props;
   const ref = createRef<Phaser.GameObjects.Text>();
 
+  function onMouseOver() {
+    ref.current!.setTint(0xdddddd);
+  }
+
+  function onMouseOut() {
+    ref.current!.setTint(0xffffff);
+  }
+
   return (
     <Text
       {...textProps}
       input={{ cursor: 'pointer' }}
       onPointerDown={onClick}
-      onPointerOver={() => ref.current!.setTint(0xdddddd)}
-      onPointerOut={() => ref.current!.setTint(0xffffff)}
+      onPointerOver={onMouseOver}
+      onPointerOut={onMouseOut}
       originX={center ? 0.5 : undefined}
       originY={center ? 0.5 : undefined}
       ref={ref}
