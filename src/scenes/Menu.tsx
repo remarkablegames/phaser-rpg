@@ -10,14 +10,14 @@ export class Menu extends Scene {
   }
 
   create() {
-    this.input.keyboard!.on('keydown-ESC', this.unpause, this);
+    this.input.keyboard!.on('keydown-ESC', this.exit, this);
     const { centerX, centerY } = this.cameras.main;
 
     render(
       <>
         <Overlay />
 
-        <Button center fixed onClick={this.unpause} x={centerX} y={centerY}>
+        <Button center fixed onClick={this.exit} x={centerX} y={centerY}>
           Resume
         </Button>
       </>,
@@ -25,7 +25,7 @@ export class Menu extends Scene {
     );
   }
 
-  private unpause() {
+  private exit() {
     this.scene.resume(key.scene.main);
     this.scene.stop();
   }
