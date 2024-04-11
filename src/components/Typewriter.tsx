@@ -9,7 +9,7 @@ interface Props {
 }
 
 /**
- * Text box that has a "fixed" position on the screen.
+ * Textbox that has a "fixed" position on the screen.
  */
 export function Typewriter(props: Props) {
   const scene = useScene();
@@ -43,7 +43,7 @@ export function Typewriter(props: Props) {
       style={{
         color: '#000',
         fontFamily: 'monospace',
-        fontSize: '18px ',
+        fontSize: '18px',
         backgroundColor: '#fff',
         // @ts-expect-error padding
         padding: { x: 20, y: 10 },
