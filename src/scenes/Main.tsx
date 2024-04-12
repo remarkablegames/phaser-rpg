@@ -10,6 +10,7 @@ import {
   TILESET_NAME,
 } from '../constants';
 import { Player } from '../sprites';
+import { state } from '../state';
 
 export class Main extends Phaser.Scene {
   private player!: Player;
@@ -76,7 +77,14 @@ export class Main extends Phaser.Scene {
 
     render(<TilemapDebug tilemapLayer={worldLayer} />, this);
 
-    render(<Typewriter text="WASD or arrow keys to move." />, this);
+    state.isTypewriting = true;
+    render(
+      <Typewriter
+        text="WASD or arrow keys to move."
+        onEnd={() => (state.isTypewriting = false)}
+      />,
+      this,
+    );
 
     this.input.keyboard!.on('keydown-ESC', () => {
       this.scene.pause(key.scene.main);
@@ -85,20 +93,19 @@ export class Main extends Phaser.Scene {
   }
 
   private enablePlayerSignInteraction() {
-    let canInteract = true;
     type ArcadeColliderType = Phaser.Types.Physics.Arcade.ArcadeColliderType;
 
     this.physics.add.overlap(
       this.player.selector as unknown as ArcadeColliderType,
       this.sign as unknown as ArcadeColliderType,
       () => {
-        if (this.player.cursors.space.isDown && canInteract) {
-          canInteract = false;
+        if (this.player.cursors.space.isDown && !state.isTypewriting) {
+          state.isTypewriting = true;
 
           render(
             <Typewriter
               text="Welcome to Phaser RPG!"
-              onEnd={() => (canInteract = true)}
+              onEnd={() => (state.isTypewriting = false)}
             />,
             this,
           );
