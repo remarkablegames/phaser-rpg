@@ -322,6 +322,13 @@
           "height": 28,
           "id": 277,
           "name": "Sign",
+          "properties": [
+            {
+              "name": "text",
+              "type": "string",
+              "value": "Welcome to Phaser RPG!"
+            }
+          ],
           "rotation": 0,
           "type": "",
           "visible": true,

@@ -12,9 +12,13 @@ import {
 import { Player } from '../sprites';
 import { state } from '../state';
 
+interface Sign extends Phaser.Physics.Arcade.StaticBody {
+  text?: string;
+}
+
 export class Main extends Phaser.Scene {
   private player!: Player;
-  private sign!: Phaser.Physics.Arcade.StaticBody;
+  private sign!: Sign;
 
   constructor() {
     super(key.scene.main);
@@ -64,6 +68,7 @@ export class Main extends Phaser.Scene {
       sign.width,
       sign.height,
     );
+    this.sign.text = sign.properties[0].value;
 
     this.player = new Player(this, spawnPoint.x!, spawnPoint.y!);
 
@@ -96,15 +101,15 @@ export class Main extends Phaser.Scene {
     type ArcadeColliderType = Phaser.Types.Physics.Arcade.ArcadeColliderType;
 
     this.physics.add.overlap(
-      this.player.selector as unknown as ArcadeColliderType,
       this.sign as unknown as ArcadeColliderType,
-      () => {
+      this.player.selector as unknown as ArcadeColliderType,
+      (sign) => {
         if (this.player.cursors.space.isDown && !state.isTypewriting) {
           state.isTypewriting = true;
 
           render(
             <Typewriter
-              text="Welcome to Phaser RPG!"
+              text={(sign as unknown as Sign).text!}
               onEnd={() => (state.isTypewriting = false)}
             />,
             this,
