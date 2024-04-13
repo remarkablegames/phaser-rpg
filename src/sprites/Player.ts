@@ -19,7 +19,7 @@ const Velocity = {
   Vertical: 175,
 } as const;
 
-export default class Player extends Phaser.Physics.Arcade.Sprite {
+export class Player extends Phaser.Physics.Arcade.Sprite {
   body!: Phaser.Physics.Arcade.Body;
   cursors: Cursors;
   selector: Phaser.Physics.Arcade.StaticBody;
