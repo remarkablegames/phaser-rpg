@@ -3,10 +3,10 @@ import Phaser from 'phaser';
 import { key } from '../constants';
 
 enum Animation {
-  Left = 'Left',
-  Right = 'Right',
-  Up = 'Up',
-  Down = 'Down',
+  Left = 'player_left',
+  Right = 'player_right',
+  Up = 'player_up',
+  Down = 'player_down',
 }
 
 type Cursors = Record<
@@ -133,8 +133,34 @@ export class Player extends Phaser.Physics.Arcade.Sprite {
     }
   }
 
+  private moveSelector(animation: Animation) {
+    const { body, selector } = this;
+
+    switch (animation) {
+      case Animation.Left:
+        selector.x = body.x - 19;
+        selector.y = body.y + 14;
+        break;
+
+      case Animation.Right:
+        selector.x = body.x + 35;
+        selector.y = body.y + 14;
+        break;
+
+      case Animation.Up:
+        selector.x = body.x + 8;
+        selector.y = body.y - 18;
+        break;
+
+      case Animation.Down:
+        selector.x = body.x + 8;
+        selector.y = body.y + 46;
+        break;
+    }
+  }
+
   update() {
-    const { anims, body, cursors, selector } = this;
+    const { anims, body, cursors } = this;
     const prevVelocity = body.velocity.clone();
 
     // Stop any previous movement from the last frame
@@ -145,15 +171,11 @@ export class Player extends Phaser.Physics.Arcade.Sprite {
       case cursors.left.isDown:
       case cursors.a.isDown:
         body.setVelocityX(-Velocity.Horizontal);
-        selector.x = body.x - 19;
-        selector.y = body.y + 14;
         break;
 
       case cursors.right.isDown:
       case cursors.d.isDown:
         body.setVelocityX(Velocity.Horizontal);
-        selector.x = body.x + 35;
-        selector.y = body.y + 14;
         break;
     }
 
@@ -162,15 +184,11 @@ export class Player extends Phaser.Physics.Arcade.Sprite {
       case cursors.up.isDown:
       case cursors.w.isDown:
         body.setVelocityY(-Velocity.Vertical);
-        selector.x = body.x + 8;
-        selector.y = body.y - 18;
         break;
 
       case cursors.down.isDown:
       case cursors.s.isDown:
         body.setVelocityY(Velocity.Vertical);
-        selector.x = body.x + 8;
-        selector.y = body.y + 46;
         break;
     }
 
@@ -182,21 +200,25 @@ export class Player extends Phaser.Physics.Arcade.Sprite {
       case cursors.left.isDown:
       case cursors.a.isDown:
         anims.play(Animation.Left, true);
+        this.moveSelector(Animation.Left);
         break;
 
       case cursors.right.isDown:
       case cursors.d.isDown:
         anims.play(Animation.Right, true);
+        this.moveSelector(Animation.Right);
         break;
 
       case cursors.up.isDown:
       case cursors.w.isDown:
         anims.play(Animation.Up, true);
+        this.moveSelector(Animation.Up);
         break;
 
       case cursors.down.isDown:
       case cursors.s.isDown:
         anims.play(Animation.Down, true);
+        this.moveSelector(Animation.Down);
         break;
 
       default:
@@ -206,15 +228,22 @@ export class Player extends Phaser.Physics.Arcade.Sprite {
         switch (true) {
           case prevVelocity.x < 0:
             this.setTexture(key.atlas.player, 'misa-left');
+            this.moveSelector(Animation.Left);
             break;
+
           case prevVelocity.x > 0:
             this.setTexture(key.atlas.player, 'misa-right');
+            this.moveSelector(Animation.Right);
             break;
+
           case prevVelocity.y < 0:
             this.setTexture(key.atlas.player, 'misa-back');
+            this.moveSelector(Animation.Up);
             break;
+
           case prevVelocity.y > 0:
             this.setTexture(key.atlas.player, 'misa-front');
+            this.moveSelector(Animation.Down);
             break;
         }
     }
