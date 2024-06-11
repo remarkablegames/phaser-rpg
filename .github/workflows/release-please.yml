@@ -9,10 +9,11 @@ permissions:
   pull-requests: write
 
 jobs:
-  release-please:
+  release:
     runs-on: ubuntu-latest
     outputs:
       release_created: ${{ steps.release.outputs.release_created }}
+      tag_name: ${{ steps.release.outputs.tag_name }}
 
     steps:
       - name: Release Please
@@ -21,10 +22,10 @@ jobs:
         with:
           release-type: node
 
-  publish:
-    needs: release-please
+  deploy:
+    needs: release
     runs-on: ubuntu-latest
-    if: ${{ needs.release-please.outputs.release_created }}
+    if: ${{ needs.release.outputs.release_created }}
 
     steps:
       - name: Checkout repository
@@ -39,10 +40,8 @@ jobs:
       - name: Install dependencies
         run: npm ci --prefer-offline
 
-      - name: Set environment variables
-        run: |
-          echo "VITE_APP_HOMEPAGE=$(jq -r .homepage package.json)" >> $GITHUB_ENV
-          echo "VITE_APP_VERSION=$(jq -r .version package.json)" >> $GITHUB_ENV
+      - name: Read package version
+        run: echo "VERSION=$(jq -r .version package.json)" >> $GITHUB_ENV
 
       - name: Build
         run: npm run bundle
@@ -53,6 +52,11 @@ jobs:
         uses: remarkablegames/setup-butler@v1
 
       - name: Upload to itch.io
-        run: butler push dist ${{ github.repository }}:html5 --userversion ${{ env.VITE_APP_VERSION }}
+        run: butler push dist ${{ github.repository }}:html5 --userversion ${{ env.VERSION }}
         env:
           BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }}
+
+      - name: Upload Release Artifact
+        run: gh release upload ${{ needs.release.outputs.tag_name }} dist/${{ github.event.repository.name }}-${{ env.VERSION }}.zip
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
