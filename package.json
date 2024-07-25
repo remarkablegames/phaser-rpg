@@ -32,7 +32,7 @@
     "lint-staged": "15.2.7",
     "prettier": "3.3.3",
     "typescript": "5.5.4",
-    "vite": "5.3.4",
+    "vite": "5.3.5",
     "vite-plugin-html": "3.2.2"
   },
   "private": true,
