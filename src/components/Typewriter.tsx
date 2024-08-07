@@ -27,7 +27,9 @@ export function Typewriter(props: Props) {
         const oneshot = scene.time.delayedCall(1500, () => {
           ref.current!.destroy();
           removeTimer(oneshot, scene);
-          props.onEnd && props.onEnd();
+          if (typeof props.onEnd === 'function') {
+            props.onEnd();
+          }
         });
       }
     },
