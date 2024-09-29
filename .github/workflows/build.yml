@@ -44,7 +44,6 @@ jobs:
 
       - name: Deploy
         if: github.ref_name == 'master'
-        uses: JamesIves/github-pages-deploy-action@v4
+        uses: remarkablemark/gitploy-action@v1
         with:
-          branch: gh-pages
-          folder: dist
+          directory: dist
