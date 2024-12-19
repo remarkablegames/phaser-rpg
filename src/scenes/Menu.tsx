@@ -17,9 +17,14 @@ export class Menu extends Scene {
       <>
         <Overlay />
 
-        <Button center fixed onClick={this.exit} x={centerX} y={centerY}>
-          Resume
-        </Button>
+        <Button
+          center
+          fixed
+          onClick={this.exit}
+          text="Resume"
+          x={centerX}
+          y={centerY}
+        />
       </>,
       this,
     );

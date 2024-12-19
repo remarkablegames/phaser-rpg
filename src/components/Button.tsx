@@ -3,15 +3,15 @@ import { createRef, Text } from 'phaser-jsx';
 
 interface Props {
   center?: boolean;
-  children: string;
   fixed?: boolean;
   onClick?: () => void;
+  text: string;
   x?: number;
   y?: number;
 }
 
 export function Button(props: Props) {
-  const { center, children, fixed, onClick, ...textProps } = props;
+  const { center, text, fixed, onClick, ...textProps } = props;
   const ref = createRef<Phaser.GameObjects.Text>();
 
   function onMouseOver() {
@@ -42,7 +42,7 @@ export function Button(props: Props) {
         // @ts-expect-error padding
         padding: { x: 20, y: 10 },
       }}
-      text={children}
+      text={text}
     />
   );
 }
