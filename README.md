@@ -1,18 +1,14 @@
-# phaser-rpg
+<p align="center">
+  <img src="https://github.com/remarkablegames/phaser-rpg/blob/master/public/logo192.png" alt="Phaser RPG">
+</p>
 
-<kbd>phaser-rpg</kbd> is a template for making [Phaser](https://phaser.io/) RPG games.
+# Phaser RPG
 
-Inspired by [`phaser-3-tilemap-blog-posts`](https://github.com/mikewesthad/phaser-3-tilemap-blog-posts/tree/master/examples/post-1) (see [Medium story](https://medium.com/@michaelwesthadley/958fc7e6bbd6)).
+<kbd>phaser-rpg</kbd> is a template for making [Phaser](https://phaser.io/) RPG games. The template is inspired by [`phaser-3-tilemap-blog-posts`](https://github.com/mikewesthad/phaser-3-tilemap-blog-posts/tree/master/examples/post-1) (read the [Medium story](https://medium.com/@michaelwesthadley/958fc7e6bbd6)).
 
-Demo:
+Play the game on:
 
-- [remarkablegames](https://remarkablegames.org/phaser-rpg)
-
-Stack:
-
-- [Phaser](https://phaser.io/)
-- [Vite](https://vitejs.dev/)
-- [GitHub Pages](https://pages.github.com/)
+- [remarkablegames](https://remarkablegames.org/phaser-rpg/)
 
 ## Prerequisites
 
@@ -32,6 +28,21 @@ Install the dependencies:
 ```sh
 npm install
 ```
+
+Rename the project:
+
+```sh
+git grep -l phaser-rpg | xargs sed -i '' -e 's/phaser-rpg/my-game/g'
+git grep -l 'Phaser RPG' | xargs sed -i '' -e 's/Phaser RPG/My Game/g'
+```
+
+Update the files:
+
+- [ ] `README.md`
+- [ ] `package.json`
+- [ ] `index.html`
+- [ ] `public/manifest.json`
+- [ ] `src/index.ts`
 
 ## Environment Variables
 
