@@ -46,10 +46,10 @@ Update the files:
 
 ## Environment Variables
 
-Set the environment variables:
+Update the environment variables:
 
 ```sh
-less .env
+cp .env .env.local
 ```
 
 Update the **Secrets** in the repository **Settings**.
