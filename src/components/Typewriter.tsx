@@ -43,11 +43,9 @@ export function Typewriter(props: Props) {
       x={16}
       y={16}
       style={{
-        color: '#000',
-        fontFamily: 'monospace',
-        fontSize: '18px',
         backgroundColor: '#fff',
-        // @ts-expect-error padding
+        color: '#000',
+        font: '18px monospace',
         padding: { x: 20, y: 10 },
       }}
       alpha={0.95}
