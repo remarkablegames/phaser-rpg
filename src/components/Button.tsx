@@ -1,5 +1,5 @@
 import type Phaser from 'phaser';
-import { createRef, Text } from 'phaser-jsx';
+import { Text, useRef } from 'phaser-jsx';
 
 interface Props {
   center?: boolean;
@@ -12,7 +12,7 @@ interface Props {
 
 export function Button(props: Props) {
   const { center, text, fixed, onClick, ...textProps } = props;
-  const ref = createRef<Phaser.GameObjects.Text>();
+  const ref = useRef<Phaser.GameObjects.Text>();
 
   function onMouseOver() {
     ref.current!.setTint(0xdddddd);

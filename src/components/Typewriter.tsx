@@ -1,5 +1,5 @@
 import type Phaser from 'phaser';
-import { createRef, Text, useScene } from 'phaser-jsx';
+import { Text, useRef, useScene } from 'phaser-jsx';
 
 import { Depth } from '../constants';
 
@@ -13,7 +13,7 @@ interface Props {
  */
 export function Typewriter(props: Props) {
   const scene = useScene();
-  const ref = createRef<Phaser.GameObjects.Text>();
+  const ref = useRef<Phaser.GameObjects.Text>();
   let index = 0;
 
   const timer = scene.time.addEvent({
