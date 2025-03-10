@@ -29,7 +29,7 @@
     "@types/react": "19.0.10",
     "@typescript-eslint/eslint-plugin": "8.26.0",
     "@typescript-eslint/parser": "8.26.0",
-    "eslint": "9.21.0",
+    "eslint": "9.22.0",
     "eslint-plugin-prettier": "5.2.3",
     "eslint-plugin-simple-import-sort": "12.1.1",
     "husky": "9.1.7",
