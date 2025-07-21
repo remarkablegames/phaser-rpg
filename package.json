@@ -28,7 +28,7 @@
     "@types/gtag.js": "0.0.20",
     "@types/react": "19.1.8",
     "eslint": "9.31.0",
-    "eslint-plugin-prettier": "5.5.1",
+    "eslint-plugin-prettier": "5.5.3",
     "eslint-plugin-simple-import-sort": "12.1.1",
     "husky": "9.1.7",
     "lint-staged": "16.1.2",
