@@ -49,7 +49,7 @@ jobs:
           VITE_GOOGLE_ANALYTICS_ID: ${{ secrets.GOOGLE_ANALYTICS_ID }}
 
       - name: Setup butler
-        uses: remarkablegames/setup-butler@v1
+        uses: remarkablegames/setup-butler@v2
 
       - name: Upload to itch.io
         run: butler push dist ${{ github.repository }}:html5 --userversion ${{ env.VERSION }}
