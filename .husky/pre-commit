@@ -1,1 +1,2 @@
+npm run lint:tsc
 npx lint-staged
