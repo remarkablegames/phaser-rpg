@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://github.com/remarkablegames/phaser-rpg/blob/master/public/logo192.png" alt="Phaser RPG">
+  <img src="public/logo192.png" alt="Phaser RPG">
 </p>
 
 # Phaser RPG
