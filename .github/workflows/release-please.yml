@@ -24,8 +24,11 @@ jobs:
 
   deploy:
     needs: release
-    runs-on: ubuntu-latest
     if: ${{ needs.release.outputs.release_created }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
 
     steps:
       - name: Checkout repository
@@ -40,23 +43,64 @@ jobs:
       - name: Install dependencies
         run: npm ci --prefer-offline
 
-      - name: Read package version
-        run: echo "VERSION=$(jq -r .version package.json)" >> $GITHUB_ENV
-
-      - name: Build
+      - name: Build game
+        shell: bash
         run: npm run bundle
         env:
           VITE_GOOGLE_ANALYTICS_ID: ${{ secrets.GOOGLE_ANALYTICS_ID }}
 
+      - name: Get variables
+        id: vars
+        shell: bash
+        run: |
+          echo "app_name=$(jq -r .short_name public/manifest.json)" >> $GITHUB_OUTPUT
+          echo "window_title=$(jq -r .name public/manifest.json)" >> $GITHUB_OUTPUT
+          echo "CHANNEL=$(echo $RUNNER_OS | tr '[:upper:]' '[:lower:]')" >> $GITHUB_ENV
+          echo "VERSION=$(jq -r .version package.json)" >> $GITHUB_ENV
+
       - name: Setup butler
         uses: remarkablegames/setup-butler@v2
 
-      - name: Upload to itch.io
-        run: butler push dist ${{ github.repository }}:html5 --userversion ${{ env.VERSION }}
+      - name: Upload web build
+        if: runner.os == 'Linux'
+        working-directory: dist
+        run: |
+          butler push . $GITHUB_REPOSITORY:html5 --userversion $VERSION
+          zip -r web.zip .
+          gh release upload ${{ needs.release.outputs.tag_name }} web.zip
+        env:
+          BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }}
+          GH_TOKEN: ${{ github.token }}
+
+      - name: Build app
+        uses: remarkablemark/tauri-action@v1
+        id: tauri
+        with:
+          app-name: ${{ steps.vars.outputs.app_name }}
+          app-version: ${{ env.VERSION }}
+          window-title: ${{ steps.vars.outputs.window_title }}
+          icon-path: public/app-icon.png
+        env:
+          APPLE_SIGNING_IDENTITY: '-'
+
+      - name: Upload app to itch.io
+        run: >
+          butler push
+          ${{ steps.tauri.outputs.bundle-path }}
+          ${{ github.repository }}:${{ env.CHANNEL }}
+          --userversion ${{ env.VERSION }}
         env:
           BUTLER_API_KEY: ${{ secrets.BUTLER_API_KEY }}
 
       - name: Upload Release Artifact
-        run: gh release upload ${{ needs.release.outputs.tag_name }} dist/${{ github.event.repository.name }}-${{ env.VERSION }}.zip
+        working-directory: ${{ steps.tauri.outputs.bundle-path }}
+        shell: bash
+        run: |
+          if [[ $RUNNER_OS == 'Windows' ]]; then
+            7z a -r $CHANNEL.zip ./*
+          else
+            zip -r $CHANNEL.zip .
+          fi
+          gh release upload ${{ needs.release.outputs.tag_name }} $CHANNEL.zip
         env:
-          GITHUB_TOKEN: ${{ github.token }}
+          GH_TOKEN: ${{ github.token }}

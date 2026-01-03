@@ -5,7 +5,7 @@
   "author": "Mark <mark@remarkablemark.org>",
   "scripts": {
     "build": "npm run clean && vite build",
-    "bundle": "scripts/bundle.sh",
+    "bundle": "bash scripts/bundle.sh",
     "clean": "rm -rf dist",
     "lint": "eslint .",
     "lint:fix": "npm run lint -- --fix",
