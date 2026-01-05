@@ -15,7 +15,11 @@ Play the game on:
 
 ## Prerequisites
 
-- [nvm](https://github.com/nvm-sh/nvm#readme)
+[nvm](https://github.com/nvm-sh/nvm#installing-and-updating):
+
+```sh
+brew install nvm
+```
 
 ## Install
 
