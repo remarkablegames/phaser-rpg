@@ -36,7 +36,7 @@ Follow these rules for all code you write:
 
 **Naming conventions:**
 
-- Functions: camelCase (`getGameObject`, `createLevel`)
+- Functions: camelCase (`getEnemies`, `createLevel`)
 - Classes: PascalCase (`GameStateManager`, `Player`)
 - Constants: UPPER_SNAKE_CASE (`GAME_CONFIG`, `MAX_LEVEL`)
 
@@ -68,4 +68,4 @@ Boundaries:
 
 - ✅ **Always:** Write to `src/`, run lint and type check before commits, follow naming conventions
 - ⚠️ **Ask first:** Adding dependencies, modifying CI/CD config
-- 🚫 **Never:** Commit secrets or API keys, edit `node_modules/`
+- 🚫 **Never:** Commit secrets or API keys, edit `node_modules/
