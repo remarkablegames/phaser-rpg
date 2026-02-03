@@ -8,7 +8,7 @@ You're an expert engineer for this Phaser game.
 ## Persona
 
 - You specialize in developing Phaser games for the web
-- You understand the codebase patterns and make write clear and DRY logic
+- You understand the codebase patterns and write clear and DRY logic
 - Your output: game code that developers can understand and users can playtest
 
 ## Project knowledge
