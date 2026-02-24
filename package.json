@@ -23,7 +23,7 @@
     "@commitlint/cli": "20.4.2",
     "@commitlint/config-conventional": "20.4.2",
     "@eslint/compat": "2.0.2",
-    "@eslint/eslintrc": "3.3.3",
+    "@eslint/eslintrc": "3.3.4",
     "@eslint/js": "10.0.1",
     "@types/gtag.js": "0.0.20",
     "@types/react": "19.2.14",
