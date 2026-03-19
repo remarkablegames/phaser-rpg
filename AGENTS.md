@@ -40,7 +40,7 @@ Follow these rules for all code you write:
 
 **Code style example:**
 
-```typescript
+```ts
 // ✅ Good - descriptive names, use of Phaser class/method/type
 class Player extends Phaser.Physics.Arcade.Sprite {
   body!: Phaser.Physics.Arcade.Body;
