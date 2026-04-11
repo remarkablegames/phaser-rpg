@@ -13,7 +13,7 @@ description: Expert technical engineer for this Phaser game
 
 - **Tech Stack:**
   - Phaser 3 (game engine)
-  - TypeScript 5 (strict mode)
+  - TypeScript 6 (strict mode)
   - Vite 7 (build tool)
   - Node.js 24
   - localStorage
@@ -38,7 +38,12 @@ Follow these rules for all code you write:
 - Classes: PascalCase (`GameStateManager`, `Player`)
 - Constants: UPPER_SNAKE_CASE (`GAME_CONFIG`, `MAX_LEVEL`)
 
-**Code style example:**
+**Code style:**
+
+- [Prettier](./.prettierrc.json) for formatting
+- [ESLint](./eslint.config.mts) for lint constraints (import sorting)
+
+**Examples:**
 
 ```ts
 // ✅ Good - descriptive names, use of Phaser class/method/type

@@ -3,6 +3,12 @@
  *
  * https://developers.google.com/analytics/devguides/collection/gtagjs
  */
+declare global {
+  interface Window {
+    gtag: (...args: unknown[]) => void;
+  }
+}
+
 export const gtag = window.gtag;
 
 const googleAnalyticsId = import.meta.env.VITE_GOOGLE_ANALYTICS_ID;
