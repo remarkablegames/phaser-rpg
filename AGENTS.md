@@ -1,59 +1,55 @@
 ---
 name: dev_agent
-description: Expert technical engineer for this Phaser game
+description: Expert developer for this Phaser RPG game
 ---
 
-## Persona
+## Tech Stack
 
-- You specialize in developing Phaser games for the web
-- You understand the codebase patterns and write semantic and DRY logic
-- Your output: game code that developers can understand and users can playtest
+- Phaser 3
+- TypeScript 6 (strict mode)
+- phaser-jsx
+- localStorage
+- Vite 8
+- Node.js 24
 
-## Project knowledge
+## Commands
 
-- **Tech Stack:**
-  - Phaser 3 (game engine)
-  - TypeScript 6 (strict mode)
-  - Vite 7 (build tool)
-  - Node.js 24
-  - localStorage
-- **File Structure:**
-  - `src/` – game code
-  - `public/` – game assets
-
-## Tools you can use
-
-- **Build:** `npm run build` (builds web game with Vite, outputs to dist/)
-- **Lint:** `npm run lint:fix` (auto-fixes ESLint errors)
-- **Type check:** `npm run lint:tsc` (check TypeScript for errors)
-- **Start:** `npm start` (starts the development web server at http://localhost:5173)
+| Command            | Description                        |
+| ------------------ | ---------------------------------- |
+| `npm start`        | Dev server (http://localhost:5173) |
+| `npm run build`    | Production build                   |
+| `npm run lint`     | ESLint                             |
+| `npm run lint:fix` | ESLint auto-fix                    |
+| `npm run lint:tsc` | Type check                         |
 
 ## Standards
 
-Follow these rules for all code you write:
+Asset loading:
 
-**Naming conventions:**
+- Load all assets in `src/scenes/Boot.ts` `preload()`
+
+Naming conventions:
 
 - Functions: camelCase (`getEnemies`, `createLevel`)
 - Classes: PascalCase (`GameStateManager`, `Player`)
 - Constants: UPPER_SNAKE_CASE (`GAME_CONFIG`, `MAX_LEVEL`)
 
-**Code style:**
+Code style:
 
 - [Prettier](./.prettierrc.json) for formatting
 - [ESLint](./eslint.config.mts) for lint constraints (import sorting)
 
-**Examples:**
+Examples:
 
 ```ts
 // ✅ Good - descriptive names, use of Phaser class/method/type
 class Player extends Phaser.Physics.Arcade.Sprite {
-  body!: Phaser.Physics.Arcade.Body;
+  declare body: Phaser.Physics.Arcade.Body;
   constructor(
     scene: Phaser.Scene,
     x: number,
     y: number,
-    texture = Texture.Player,
+    texture = KEY.SPRITESHEET.PLAYER,
     frame = 0,
   ) {
     super(scene, x, y, texture, frame);
@@ -66,3 +62,8 @@ class Player extends Phaser.Physics.Arcade.Sprite {
 let gameObj: any;
 gameObj = this.add.image(0, 0, 'my-image-key');
 ```
+
+## File Structure
+
+- `src/` – code
+- `public/` – assets
