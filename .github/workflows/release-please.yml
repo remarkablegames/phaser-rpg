@@ -59,7 +59,7 @@ jobs:
           echo "VERSION=$(jq -r .version package.json)" >> $GITHUB_ENV
 
       - name: Setup butler
-        uses: remarkablegames/setup-butler@v2
+        uses: remarkablegames/setup-butler@v3
 
       - name: Upload web build
         if: runner.os == 'Linux'
