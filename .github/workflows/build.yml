@@ -32,12 +32,22 @@ jobs:
       - name: Type check
         run: npm run lint:tsc
 
+      - name: Build for page test
+        run: npm run build
+
+      - name: Page test
+        uses: remarkablemark/page-test-action@v1
+        with:
+          url: http://localhost:3000
+          start: python3 -m http.server 3000 --directory dist
+          wait-on: http://localhost:3000
+
       - name: Set environment variables
         run: |
           echo "VITE_APP_HOMEPAGE=$(jq -r .homepage package.json)" >> $GITHUB_ENV
           echo "VITE_APP_VERSION=$(jq -r .version package.json)" >> $GITHUB_ENV
 
-      - name: Build
+      - name: Build for deploy
         run: npm run build -- --base /${{ github.event.repository.name }}/
         env:
           VITE_GOOGLE_ANALYTICS_ID: ${{ secrets.GOOGLE_ANALYTICS_ID }}
