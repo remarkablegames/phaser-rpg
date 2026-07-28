@@ -32,15 +32,12 @@ jobs:
       - name: Type check
         run: npm run lint:tsc
 
-      - name: Build for page test
-        run: npm run build
-
       - name: Page test
         uses: remarkablemark/page-test-action@v1
         with:
-          url: http://localhost:3000
-          start: python3 -m http.server 3000 --directory dist
-          wait-on: http://localhost:3000
+          url: http://localhost:5173
+          start: npm start
+          wait-on: http://localhost:5173
 
       - name: Set environment variables
         run: |
