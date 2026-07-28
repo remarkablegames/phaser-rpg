@@ -43,7 +43,7 @@ export class Main extends Phaser.Scene {
       tileset,
       0,
       0,
-    )!;
+    ) as Phaser.Tilemaps.TilemapLayer;
     const aboveLayer = this.tilemap.createLayer(
       TilemapLayer.AbovePlayer,
       tileset,
