@@ -13,6 +13,12 @@ Play in your browser:
 
 - [remarkablegames](https://remarkablegames.org/phaser-rpg/)
 
+Or download for desktop:
+
+- [Windows](https://github.com/remarkablegames/phaser-template/releases/latest/download/windows.zip)
+- [macOS](https://github.com/remarkablegames/phaser-template/releases/latest/download/macos.zip)
+- [Linux](https://github.com/remarkablegames/phaser-template/releases/latest/download/linux.zip)
+
 ## Prerequisites
 
 [nvm](https://github.com/nvm-sh/nvm#installing-and-updating):
