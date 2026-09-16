@@ -10,7 +10,7 @@ export class Menu extends Scene {
   }
 
   create() {
-    this.input.keyboard!.on('keydown-ESC', this.exit, this);
+    this.input.keyboard?.on('keydown-ESC', this.exit, this);
     const { centerX, centerY } = this.cameras.main;
 
     render(
@@ -30,8 +30,8 @@ export class Menu extends Scene {
     );
   }
 
-  private exit() {
+  private exit = () => {
     this.scene.resume(key.scene.main);
     this.scene.stop();
-  }
+  };
 }

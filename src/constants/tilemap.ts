@@ -7,7 +7,7 @@ export enum TilemapLayer {
   Objects = 'Objects',
 }
 
-export enum TilemapObject {
-  SpawnPoint = 'Spawn Point',
-  Sign = 'Sign',
-}
+export const TilemapObject = {
+  SpawnPoint: 'Spawn Point',
+  Sign: 'Sign',
+} as const;

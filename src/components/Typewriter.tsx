@@ -18,14 +18,16 @@ export function Typewriter(props: Props) {
 
   const timer = scene.time.addEvent({
     callback() {
-      ref.current!.text += props.text[index];
+      if (ref.current) {
+        ref.current.text += props.text[index];
+      }
       index++;
 
       if (index >= props.text.length) {
         removeTimer(timer, scene);
 
         const oneshot = scene.time.delayedCall(1500, () => {
-          ref.current!.destroy();
+          ref.current?.destroy();
           removeTimer(oneshot, scene);
           if (typeof props.onEnd === 'function') {
             props.onEnd();

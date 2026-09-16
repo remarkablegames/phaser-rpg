@@ -34,7 +34,10 @@ export class Main extends Phaser.Scene {
     const tileset = this.tilemap.addTilesetImage(
       TILESET_NAME,
       key.image.tuxemon,
-    )!;
+    );
+    if (!tileset) {
+      throw new Error(`Tileset "${TILESET_NAME}" not found`);
+    }
 
     // Parameters: layer name (or index) from Tiled, tileset, x, y
     this.tilemap.createLayer(TilemapLayer.BelowPlayer, tileset, 0, 0);
@@ -49,7 +52,7 @@ export class Main extends Phaser.Scene {
       tileset,
       0,
       0,
-    )!;
+    );
 
     this.worldLayer.setCollisionByProperty({ collides: true });
     this.physics.world.bounds.width = this.worldLayer.width;
@@ -81,7 +84,7 @@ export class Main extends Phaser.Scene {
       this,
     );
 
-    this.input.keyboard!.on('keydown-ESC', () => {
+    this.input.keyboard?.on('keydown-ESC', () => {
       this.scene.pause(key.scene.main);
       this.scene.launch(key.scene.menu);
     });
@@ -93,9 +96,12 @@ export class Main extends Phaser.Scene {
     const spawnPoint = this.tilemap.findObject(
       TilemapLayer.Objects,
       ({ name }) => name === TilemapObject.SpawnPoint,
-    )!;
+    );
+    if (!spawnPoint) {
+      throw new Error('Spawn point not found');
+    }
 
-    this.player = new Player(this, spawnPoint.x!, spawnPoint.y!);
+    this.player = new Player(this, spawnPoint.x ?? 0, spawnPoint.y ?? 0);
     this.addPlayerSignInteraction();
 
     // Watch the player and worldLayer for collisions
@@ -106,28 +112,33 @@ export class Main extends Phaser.Scene {
     const sign = this.tilemap.findObject(
       TilemapLayer.Objects,
       ({ name }) => name === TilemapObject.Sign,
-    )!;
+    );
+    if (!sign) {
+      throw new Error('Sign not found');
+    }
 
     this.sign = this.physics.add.staticBody(
-      sign.x!,
-      sign.y!,
+      sign.x ?? 0,
+      sign.y ?? 0,
       sign.width,
       sign.height,
     );
-    this.sign.text = sign.properties[0].value;
 
-    type ArcadeColliderType = Phaser.Types.Physics.Arcade.ArcadeColliderType;
+    const properties = sign.properties as
+      { name: string; value: unknown }[] | undefined;
+    const text = properties?.find(({ name }) => name === 'text')?.value;
+    this.sign.text = typeof text === 'string' ? text : '';
 
     this.physics.add.overlap(
-      this.sign as unknown as ArcadeColliderType,
-      this.player.selector as unknown as ArcadeColliderType,
+      this.sign,
+      this.player.selector,
       (sign) => {
         if (this.player.cursors.space.isDown && !state.isTypewriting) {
           state.isTypewriting = true;
 
           render(
             <Typewriter
-              text={(sign as unknown as Sign).text!}
+              text={(sign as unknown as Sign).text ?? ''}
               onEnd={() => (state.isTypewriting = false)}
             />,
             this,

@@ -15,7 +15,7 @@ export function TilemapDebug(props: Props) {
     return null;
   }
 
-  scene.input.keyboard!.on('keydown-SHIFT', () => {
+  scene.input.keyboard?.on('keydown-SHIFT', () => {
     isDebug = !isDebug;
     graphics.setAlpha(isDebug ? 0.75 : 0);
   });

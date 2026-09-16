@@ -64,7 +64,7 @@ export class Player extends Phaser.Physics.Arcade.Sprite {
    * Track the arrow keys & WASD.
    */
   private createCursorKeys() {
-    return this.scene.input.keyboard!.addKeys(
+    return this.scene.input.keyboard?.addKeys(
       'w,a,s,d,up,left,down,right,space',
     ) as Cursors;
   }

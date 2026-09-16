@@ -15,11 +15,11 @@ export function Button(props: Props) {
   const ref = useRef<Phaser.GameObjects.Text>();
 
   function onMouseOver() {
-    ref.current!.setTint(0xdddddd);
+    ref.current?.setTint(0xdddddd);
   }
 
   function onMouseOut() {
-    ref.current!.setTint(0xffffff);
+    ref.current?.setTint(0xffffff);
   }
 
   return (
