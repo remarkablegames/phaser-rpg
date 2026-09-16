@@ -5,9 +5,9 @@ description: Expert developer for this Phaser RPG game
 
 ## Tech Stack
 
-- Phaser 3
+- Phaser 4
+- phaser-jsx 1
 - TypeScript 6 (strict mode)
-- phaser-jsx
 - localStorage
 - Vite 8
 - Node.js 24
