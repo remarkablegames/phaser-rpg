@@ -43,6 +43,11 @@ jobs:
       - name: Install dependencies
         run: npm ci --prefer-offline --ignore-scripts
 
+      - name: Set environment variables
+        run: |
+          echo "VITE_APP_HOMEPAGE=$(jq -r .homepage package.json)" >> $GITHUB_ENV
+          echo "VITE_APP_VERSION=$(jq -r .version package.json)" >> $GITHUB_ENV
+
       - name: Build game
         run: npm run bundle
 
@@ -120,6 +125,11 @@ jobs:
 
       - name: Install dependencies
         run: npm ci --prefer-offline --ignore-scripts
+
+      - name: Set environment variables
+        run: |
+          echo "VITE_APP_HOMEPAGE=$(jq -r .homepage package.json)" >> $GITHUB_ENV
+          echo "VITE_APP_VERSION=$(jq -r .version package.json)" >> $GITHUB_ENV
 
       - name: Build game
         run: npm run bundle
