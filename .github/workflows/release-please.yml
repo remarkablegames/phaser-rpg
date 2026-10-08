@@ -135,7 +135,7 @@ jobs:
         run: npm run bundle
 
       - name: Upload to Wavedash
-        uses: remarkablegames/wavedash-action@v1
+        uses: remarkablegames/wavedash-action@v2
         with:
           token: ${{ secrets.WAVEDASH_TOKEN }}
           game-id: ${{ secrets.WAVEDASH_GAME_ID }}
