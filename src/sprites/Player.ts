@@ -1,26 +1,26 @@
 import Phaser from 'phaser';
 
-import { key } from '../constants';
+import { KEY } from '../constants';
 
-enum Animation {
-  Left = 'player_left',
-  Right = 'player_right',
-  Up = 'player_up',
-  Down = 'player_down',
-}
+const ANIMATION = {
+  LEFT: 'player_left',
+  RIGHT: 'player_right',
+  UP: 'player_up',
+  DOWN: 'player_down',
+} as const;
 
 type Cursors = Record<
   'w' | 'a' | 's' | 'd' | 'up' | 'left' | 'down' | 'right' | 'space',
   Phaser.Input.Keyboard.Key
 >;
 
-const Velocity = {
-  Horizontal: 175,
-  Vertical: 175,
+const VELOCITY = {
+  HORIZONTAL: 175,
+  VERTICAL: 175,
 } as const;
 
 export class Player extends Phaser.Physics.Arcade.Sprite {
-  body!: Phaser.Physics.Arcade.Body;
+  declare body: Phaser.Physics.Arcade.Body;
   cursors: Cursors;
   selector: Phaser.Physics.Arcade.StaticBody;
 
@@ -28,7 +28,7 @@ export class Player extends Phaser.Physics.Arcade.Sprite {
     scene: Phaser.Scene,
     x: number,
     y: number,
-    texture = key.atlas.player,
+    texture = KEY.ATLAS.PLAYER,
     frame = 'misa-front',
   ) {
     super(scene, x, y, texture, frame);
@@ -73,10 +73,10 @@ export class Player extends Phaser.Physics.Arcade.Sprite {
     const anims = this.scene.anims;
 
     // Create left animation
-    if (!anims.exists(Animation.Left)) {
+    if (!anims.exists(ANIMATION.LEFT)) {
       anims.create({
-        key: Animation.Left,
-        frames: anims.generateFrameNames(key.atlas.player, {
+        key: ANIMATION.LEFT,
+        frames: anims.generateFrameNames(KEY.ATLAS.PLAYER, {
           prefix: 'misa-left-walk.',
           start: 0,
           end: 3,
@@ -88,10 +88,10 @@ export class Player extends Phaser.Physics.Arcade.Sprite {
     }
 
     // Create right animation
-    if (!anims.exists(Animation.Right)) {
+    if (!anims.exists(ANIMATION.RIGHT)) {
       anims.create({
-        key: Animation.Right,
-        frames: anims.generateFrameNames(key.atlas.player, {
+        key: ANIMATION.RIGHT,
+        frames: anims.generateFrameNames(KEY.ATLAS.PLAYER, {
           prefix: 'misa-right-walk.',
           start: 0,
           end: 3,
@@ -103,10 +103,10 @@ export class Player extends Phaser.Physics.Arcade.Sprite {
     }
 
     // Create up animation
-    if (!anims.exists(Animation.Up)) {
+    if (!anims.exists(ANIMATION.UP)) {
       anims.create({
-        key: Animation.Up,
-        frames: anims.generateFrameNames(key.atlas.player, {
+        key: ANIMATION.UP,
+        frames: anims.generateFrameNames(KEY.ATLAS.PLAYER, {
           prefix: 'misa-back-walk.',
           start: 0,
           end: 3,
@@ -118,10 +118,10 @@ export class Player extends Phaser.Physics.Arcade.Sprite {
     }
 
     // Create down animation
-    if (!anims.exists(Animation.Down)) {
+    if (!anims.exists(ANIMATION.DOWN)) {
       anims.create({
-        key: Animation.Down,
-        frames: anims.generateFrameNames(key.atlas.player, {
+        key: ANIMATION.DOWN,
+        frames: anims.generateFrameNames(KEY.ATLAS.PLAYER, {
           prefix: 'misa-front-walk.',
           start: 0,
           end: 3,
@@ -133,26 +133,26 @@ export class Player extends Phaser.Physics.Arcade.Sprite {
     }
   }
 
-  private moveSelector(animation: Animation) {
+  private moveSelector(animation: (typeof ANIMATION)[keyof typeof ANIMATION]) {
     const { body, selector } = this;
 
     switch (animation) {
-      case Animation.Left:
+      case ANIMATION.LEFT:
         selector.x = body.x - 19;
         selector.y = body.y + 14;
         break;
 
-      case Animation.Right:
+      case ANIMATION.RIGHT:
         selector.x = body.x + 35;
         selector.y = body.y + 14;
         break;
 
-      case Animation.Up:
+      case ANIMATION.UP:
         selector.x = body.x + 8;
         selector.y = body.y - 18;
         break;
 
-      case Animation.Down:
+      case ANIMATION.DOWN:
         selector.x = body.x + 8;
         selector.y = body.y + 46;
         break;
@@ -170,12 +170,12 @@ export class Player extends Phaser.Physics.Arcade.Sprite {
     switch (true) {
       case cursors.left.isDown:
       case cursors.a.isDown:
-        body.setVelocityX(-Velocity.Horizontal);
+        body.setVelocityX(-VELOCITY.HORIZONTAL);
         break;
 
       case cursors.right.isDown:
       case cursors.d.isDown:
-        body.setVelocityX(Velocity.Horizontal);
+        body.setVelocityX(VELOCITY.HORIZONTAL);
         break;
     }
 
@@ -183,42 +183,42 @@ export class Player extends Phaser.Physics.Arcade.Sprite {
     switch (true) {
       case cursors.up.isDown:
       case cursors.w.isDown:
-        body.setVelocityY(-Velocity.Vertical);
+        body.setVelocityY(-VELOCITY.VERTICAL);
         break;
 
       case cursors.down.isDown:
       case cursors.s.isDown:
-        body.setVelocityY(Velocity.Vertical);
+        body.setVelocityY(VELOCITY.VERTICAL);
         break;
     }
 
     // Normalize and scale the velocity so that player can't move faster along a diagonal
-    body.velocity.normalize().scale(Velocity.Horizontal);
+    body.velocity.normalize().scale(VELOCITY.HORIZONTAL);
 
     // Update the animation last and give left/right animations precedence over up/down animations
     switch (true) {
       case cursors.left.isDown:
       case cursors.a.isDown:
-        anims.play(Animation.Left, true);
-        this.moveSelector(Animation.Left);
+        anims.play(ANIMATION.LEFT, true);
+        this.moveSelector(ANIMATION.LEFT);
         break;
 
       case cursors.right.isDown:
       case cursors.d.isDown:
-        anims.play(Animation.Right, true);
-        this.moveSelector(Animation.Right);
+        anims.play(ANIMATION.RIGHT, true);
+        this.moveSelector(ANIMATION.RIGHT);
         break;
 
       case cursors.up.isDown:
       case cursors.w.isDown:
-        anims.play(Animation.Up, true);
-        this.moveSelector(Animation.Up);
+        anims.play(ANIMATION.UP, true);
+        this.moveSelector(ANIMATION.UP);
         break;
 
       case cursors.down.isDown:
       case cursors.s.isDown:
-        anims.play(Animation.Down, true);
-        this.moveSelector(Animation.Down);
+        anims.play(ANIMATION.DOWN, true);
+        this.moveSelector(ANIMATION.DOWN);
         break;
 
       default:
@@ -227,23 +227,23 @@ export class Player extends Phaser.Physics.Arcade.Sprite {
         // If we were moving, pick an idle frame to use
         switch (true) {
           case prevVelocity.x < 0:
-            this.setTexture(key.atlas.player, 'misa-left');
-            this.moveSelector(Animation.Left);
+            this.setTexture(KEY.ATLAS.PLAYER, 'misa-left');
+            this.moveSelector(ANIMATION.LEFT);
             break;
 
           case prevVelocity.x > 0:
-            this.setTexture(key.atlas.player, 'misa-right');
-            this.moveSelector(Animation.Right);
+            this.setTexture(KEY.ATLAS.PLAYER, 'misa-right');
+            this.moveSelector(ANIMATION.RIGHT);
             break;
 
           case prevVelocity.y < 0:
-            this.setTexture(key.atlas.player, 'misa-back');
-            this.moveSelector(Animation.Up);
+            this.setTexture(KEY.ATLAS.PLAYER, 'misa-back');
+            this.moveSelector(ANIMATION.UP);
             break;
 
           case prevVelocity.y > 0:
-            this.setTexture(key.atlas.player, 'misa-front');
-            this.moveSelector(Animation.Down);
+            this.setTexture(KEY.ATLAS.PLAYER, 'misa-front');
+            this.moveSelector(ANIMATION.DOWN);
             break;
         }
     }

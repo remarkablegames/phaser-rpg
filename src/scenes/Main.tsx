@@ -3,10 +3,10 @@ import { render } from 'phaser-jsx';
 
 import { TilemapDebug, Typewriter } from '../components';
 import {
-  Depth,
-  key,
-  TilemapLayer,
-  TilemapObject,
+  DEPTH,
+  KEY,
+  TILEMAP_LAYER,
+  TILEMAP_OBJECT,
   TILESET_NAME,
 } from '../constants';
 import { Player } from '../sprites';
@@ -23,32 +23,32 @@ export class Main extends Phaser.Scene {
   private worldLayer!: Phaser.Tilemaps.TilemapLayer;
 
   constructor() {
-    super(key.scene.main);
+    super(KEY.SCENE.MAIN);
   }
 
   create() {
-    this.tilemap = this.make.tilemap({ key: key.tilemap.tuxemon });
+    this.tilemap = this.make.tilemap({ key: KEY.TILEMAP.TUXEMON });
 
     // Parameters are the name you gave the tileset in Tiled and
     // the key of the tileset image in Phaser's cache (name used in preload)
     const tileset = this.tilemap.addTilesetImage(
       TILESET_NAME,
-      key.image.tuxemon,
+      KEY.IMAGE.TUXEMON,
     );
     if (!tileset) {
       throw new Error(`Tileset "${TILESET_NAME}" not found`);
     }
 
     // Parameters: layer name (or index) from Tiled, tileset, x, y
-    this.tilemap.createLayer(TilemapLayer.BelowPlayer, tileset, 0, 0);
+    this.tilemap.createLayer(TILEMAP_LAYER.BELOW_PLAYER, tileset, 0, 0);
     this.worldLayer = this.tilemap.createLayer(
-      TilemapLayer.World,
+      TILEMAP_LAYER.WORLD,
       tileset,
       0,
       0,
     ) as Phaser.Tilemaps.TilemapLayer;
     const aboveLayer = this.tilemap.createLayer(
-      TilemapLayer.AbovePlayer,
+      TILEMAP_LAYER.ABOVE_PLAYER,
       tileset,
       0,
       0,
@@ -61,7 +61,7 @@ export class Main extends Phaser.Scene {
     // By default, everything gets depth sorted on the screen in the order we created things.
     // We want the "Above Player" layer to sit on top of the player, so we explicitly give it a depth.
     // Higher depths will sit on top of lower depth objects.
-    aboveLayer.setDepth(Depth.AbovePlayer);
+    aboveLayer.setDepth(DEPTH.ABOVE_PLAYER);
 
     this.addPlayer();
 
@@ -85,8 +85,8 @@ export class Main extends Phaser.Scene {
     );
 
     this.input.keyboard?.on('keydown-ESC', () => {
-      this.scene.pause(key.scene.main);
-      this.scene.launch(key.scene.menu);
+      this.scene.pause(KEY.SCENE.MAIN);
+      this.scene.launch(KEY.SCENE.MENU);
     });
   }
 
@@ -94,8 +94,8 @@ export class Main extends Phaser.Scene {
     // Object layers in Tiled let you embed extra info into a map like a spawn point or custom collision shapes.
     // In the tmx file, there's an object layer with a point named 'Spawn Point'.
     const spawnPoint = this.tilemap.findObject(
-      TilemapLayer.Objects,
-      ({ name }) => name === TilemapObject.SpawnPoint,
+      TILEMAP_LAYER.OBJECTS,
+      ({ name }) => name === TILEMAP_OBJECT.SPAWN_POINT,
     );
     if (!spawnPoint) {
       throw new Error('Spawn point not found');
@@ -110,8 +110,8 @@ export class Main extends Phaser.Scene {
 
   private addPlayerSignInteraction() {
     const sign = this.tilemap.findObject(
-      TilemapLayer.Objects,
-      ({ name }) => name === TilemapObject.Sign,
+      TILEMAP_LAYER.OBJECTS,
+      ({ name }) => name === TILEMAP_OBJECT.SIGN,
     );
     if (!sign) {
       throw new Error('Sign not found');

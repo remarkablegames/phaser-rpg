@@ -1,13 +1,13 @@
 export const TILESET_NAME = 'tuxemon-sample-32px-extruded';
 
-export enum TilemapLayer {
-  BelowPlayer = 'Below Player',
-  World = 'World',
-  AbovePlayer = 'Above Player',
-  Objects = 'Objects',
-}
+export const TILEMAP_LAYER = {
+  BELOW_PLAYER: 'Below Player',
+  WORLD: 'World',
+  ABOVE_PLAYER: 'Above Player',
+  OBJECTS: 'Objects',
+} as const;
 
-export const TilemapObject = {
-  SpawnPoint: 'Spawn Point',
-  Sign: 'Sign',
+export const TILEMAP_OBJECT = {
+  SPAWN_POINT: 'Spawn Point',
+  SIGN: 'Sign',
 } as const;

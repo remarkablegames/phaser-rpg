@@ -1,25 +1,25 @@
-const atlas = {
-  player: 'player',
+const ATLAS = {
+  PLAYER: 'player',
 } as const;
 
-const image = {
-  spaceman: 'spaceman',
-  tuxemon: 'tuxemon',
+const IMAGE = {
+  SPACEMAN: 'spaceman',
+  TUXEMON: 'tuxemon',
 } as const;
 
-const scene = {
-  boot: 'boot',
-  main: 'main',
-  menu: 'menu',
+const SCENE = {
+  BOOT: 'boot',
+  MAIN: 'main',
+  MENU: 'menu',
 } as const;
 
-const tilemap = {
-  tuxemon: 'tuxemon',
+const TILEMAP = {
+  TUXEMON: 'tuxemon',
 } as const;
 
-export const key = {
-  atlas,
-  image,
-  scene,
-  tilemap,
+export const KEY = {
+  ATLAS,
+  IMAGE,
+  SCENE,
+  TILEMAP,
 } as const;

@@ -2,11 +2,11 @@ import { Scene } from 'phaser';
 import { render } from 'phaser-jsx';
 
 import { Button, Overlay } from '../components';
-import { key } from '../constants';
+import { KEY } from '../constants';
 
 export class Menu extends Scene {
   constructor() {
-    super(key.scene.menu);
+    super(KEY.SCENE.MENU);
   }
 
   create() {
@@ -31,7 +31,7 @@ export class Menu extends Scene {
   }
 
   private exit = () => {
-    this.scene.resume(key.scene.main);
+    this.scene.resume(KEY.SCENE.MAIN);
     this.scene.stop();
   };
 }

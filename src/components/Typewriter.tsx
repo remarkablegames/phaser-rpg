@@ -1,7 +1,7 @@
 import type Phaser from 'phaser';
 import { Text, useRef, useScene } from 'phaser-jsx';
 
-import { Depth } from '../constants';
+import { DEPTH } from '../constants';
 
 interface Props {
   text: string;
@@ -53,7 +53,7 @@ export function Typewriter(props: Props) {
       alpha={0.95}
       scrollFactorX={0}
       scrollFactorY={0}
-      depth={Depth.AboveWorld}
+      depth={DEPTH.ABOVE_WORLD}
       ref={ref}
     />
   );

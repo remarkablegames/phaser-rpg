@@ -25,7 +25,7 @@ export function Button(props: Props) {
   return (
     <Text
       {...textProps}
-      input={{ cursor: 'pointer' }}
+      input={{ cursor: 'pointer' } as Phaser.Types.Input.InteractiveObject}
       onPointerDown={onClick}
       onPointerOver={onMouseOver}
       onPointerOut={onMouseOut}
