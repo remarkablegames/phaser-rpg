@@ -16,7 +16,7 @@
   "homepage": "https://remarkablegames.org/phaser-rpg/",
   "dependencies": {
     "phaser": "4.2.1",
-    "phaser-jsx": "1.0.2"
+    "phaser-jsx": "1.0.3"
   },
   "devDependencies": {
     "@commitlint/cli": "21.2.3",
