@@ -12,6 +12,11 @@ description: Expert TypeScript developer for this Phaser RPG game
 - Vite 8
 - Node.js 24
 
+## File Structure
+
+- `src/` – code
+- `public/` – assets
+
 ## Commands
 
 - `npm run build`: builds web game with Vite, outputs to `dist/`
@@ -62,8 +67,3 @@ class Player extends Phaser.Physics.Arcade.Sprite {
 let gameObj: any;
 gameObj = this.add.image(0, 0, 'my-image-key');
 ```
-
-## File Structure
-
-- `src/` – code
-- `public/` – assets
