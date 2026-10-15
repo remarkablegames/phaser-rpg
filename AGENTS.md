@@ -1,6 +1,6 @@
 ---
 name: dev_agent
-description: Expert developer for this Phaser RPG game
+description: Expert TypeScript developer for this Phaser RPG game
 ---
 
 ## Tech Stack
