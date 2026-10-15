@@ -1,5 +1,5 @@
 ---
-name: dev_agent
+name: dev-agent
 description: Expert TypeScript developer for this Phaser RPG game
 ---
 
