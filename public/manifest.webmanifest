@@ -1,6 +1,12 @@
 {
-  "short_name": "Phaser RPG",
   "name": "Phaser RPG",
+  "short_name": "Phaser RPG",
+  "description": "Phaser RPG",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#ffffff"
+  "theme_color": "#ffffff",
+  "orientation": "landscape",
   "icons": [
     {
       "src": "favicon.ico",
@@ -17,9 +23,5 @@
       "type": "image/png",
       "sizes": "512x512"
     }
-  ],
-  "start_url": ".",
-  "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  ]
 }
