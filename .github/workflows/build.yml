@@ -41,13 +41,17 @@ jobs:
 
       - name: Set environment variables
         run: |
-          echo "VITE_APP_HOMEPAGE=$(jq -r .homepage package.json)" >> $GITHUB_ENV
-          echo "VITE_APP_VERSION=$(jq -r .version package.json)" >> $GITHUB_ENV
+          echo "VITE_APP_HOMEPAGE=$(jq -r .homepage package.json)" >> "$GITHUB_ENV"
+          echo "VITE_APP_VERSION=$(jq -r .version package.json)" >> "$GITHUB_ENV"
 
       - name: Build for GitHub Pages
         run: npm run build -- --base /${{ github.event.repository.name }}/
-        env:
-          VITE_GOOGLE_ANALYTICS_ID: ${{ secrets.GOOGLE_ANALYTICS_ID }}
+
+      - name: Inject Google Analytics
+        uses: remarkablemark/google-analytics-action@v1
+        with:
+          html-path: dist/index.html
+          measurement-id: ${{ secrets.GOOGLE_ANALYTICS_ID }}
 
       - name: Deploy to GitHub Pages
         if: github.ref_name == 'master'
