@@ -3,6 +3,12 @@ name: dev-agent
 description: Expert TypeScript developer for this Phaser RPG game
 ---
 
+## Guidance
+
+- Follow Phaser patterns and conventions
+- Keep game logic clear and avoid unnecessary duplication
+- Make changes runnable and easy to playtest
+
 ## Tech Stack
 
 - Phaser 4
