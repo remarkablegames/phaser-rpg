@@ -48,6 +48,7 @@ jobs:
         run: npm run build -- --base /${{ github.event.repository.name }}/
 
       - name: Inject Google Analytics
+        if: github.ref_name == 'master'
         uses: remarkablemark/google-analytics-action@v1
         with:
           html-path: dist/index.html
