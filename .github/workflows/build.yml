@@ -1,12 +1,18 @@
 name: build
 on: [push, pull_request]
 
+concurrency:
+  group: ${{ github.workflow_ref }}
+  cancel-in-progress: ${{ github.ref_name != 'master' }}
+
 permissions:
   contents: write
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    env:
+      GOOGLE_ANALYTICS_ID: ${{ secrets.GOOGLE_ANALYTICS_ID }}
 
     steps:
       - name: Checkout repository
@@ -48,11 +54,11 @@ jobs:
         run: npm run build -- --base /${{ github.event.repository.name }}/
 
       - name: Inject Google Analytics
-        if: github.ref_name == 'master'
+        if: github.ref_name == 'master' && env.GOOGLE_ANALYTICS_ID != ''
         uses: remarkablemark/google-analytics-action@v1
         with:
           html-path: dist/index.html
-          measurement-id: ${{ secrets.GOOGLE_ANALYTICS_ID }}
+          measurement-id: ${{ env.GOOGLE_ANALYTICS_ID }}
 
       - name: Deploy to GitHub Pages
         if: github.ref_name == 'master'
