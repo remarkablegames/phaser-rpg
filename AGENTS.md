@@ -14,8 +14,8 @@ description: Expert TypeScript developer for this Phaser RPG game
 
 ## File Structure
 
-- `src/` – code
-- `public/` – assets
+- `src/`: code
+- `public/`: assets
 
 ## Commands
 
