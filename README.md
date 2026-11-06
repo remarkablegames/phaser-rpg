@@ -58,6 +58,7 @@ Update the files:
 - [ ] `index.html`
 - [ ] `package.json`
 - [ ] `public/*.png`
+- [ ] `public/favicon.svg`
 - [ ] `public/manifest.webmanifest`
 - [ ] `src/main.ts`
 
