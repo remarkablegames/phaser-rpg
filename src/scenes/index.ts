@@ -1,3 +1,3 @@
 export * from './Boot';
-export * from './Main';
+export * from './Game';
 export * from './Menu';

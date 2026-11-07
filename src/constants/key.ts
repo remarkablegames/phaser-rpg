@@ -9,7 +9,7 @@ const IMAGE = {
 
 const SCENE = {
   BOOT: 'boot',
-  MAIN: 'main',
+  GAME: 'game',
   MENU: 'menu',
 } as const;
 

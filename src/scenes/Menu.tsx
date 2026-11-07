@@ -31,7 +31,7 @@ export class Menu extends Scene {
   }
 
   private exit = () => {
-    this.scene.resume(KEY.SCENE.MAIN);
+    this.scene.resume(KEY.SCENE.GAME);
     this.scene.stop();
   };
 }

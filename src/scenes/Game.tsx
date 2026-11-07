@@ -16,14 +16,14 @@ interface Sign extends Phaser.Physics.Arcade.StaticBody {
   text?: string;
 }
 
-export class Main extends Phaser.Scene {
+export class Game extends Phaser.Scene {
   private player!: Player;
   private sign!: Sign;
   private tilemap!: Phaser.Tilemaps.Tilemap;
   private worldLayer!: Phaser.Tilemaps.TilemapLayer;
 
   constructor() {
-    super(KEY.SCENE.MAIN);
+    super(KEY.SCENE.GAME);
   }
 
   create() {
@@ -85,7 +85,7 @@ export class Main extends Phaser.Scene {
     );
 
     this.input.keyboard?.on('keydown-ESC', () => {
-      this.scene.pause(KEY.SCENE.MAIN);
+      this.scene.pause(KEY.SCENE.GAME);
       this.scene.launch(KEY.SCENE.MENU);
     });
   }
